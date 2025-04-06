@@ -36,5 +36,9 @@
 		"typescript": "^5.0.0",
 		"typescript-eslint": "^8.20.0",
 		"vite": "^6.2.5"
+	},
+	"dependencies": {
+		"@iconify-json/mdi": "^1.2.3",
+		"unplugin-icons": "^22.1.0"
 	}
 }
