@@ -20,7 +20,7 @@
 	}
 </script>
 
-<div class="navbar bg-primary h-12 min-h-0 text-white shadow-sm">
+<div class="navbar bg-primary fixed h-12 min-h-12 overflow-hidden text-white shadow-sm">
 	<div class="navbar-start">
 		<a class="btn btn-ghost hover:bg-primary hover:border-primary text-lg hover:text-white" href="/"
 			>Snippet Manager</a
@@ -63,6 +63,18 @@
 	</div>
 </div>
 
-<main class="m-5">
-	{@render children()}
-</main>
+<div class="mt-12 flex h-full flex-col overflow-auto">
+	<main class="m-5 flex-1">
+		{@render children()}
+	</main>
+
+	<footer class="footer footer-horizontal footer-center bg-base-300 text-base-content gap-3 p-5">
+		<div class="grid grid-flow-col gap-4">
+			<a class="link link-hover" href="/imprint">Imprint</a>
+			<a class="link link-hover" href="/faq">FAQ</a>
+		</div>
+		<div>
+			<p>© Lukas Foidl 2025 - All rights reserved</p>
+		</div>
+	</footer>
+</div>
