@@ -20,7 +20,7 @@
 	}
 </script>
 
-<div class="navbar bg-primary fixed h-12 min-h-12 overflow-hidden text-white shadow-sm">
+<div class="navbar bg-primary fixed z-999 h-12 min-h-12 text-white shadow-sm">
 	<div class="navbar-start">
 		<a class="btn btn-ghost hover:bg-primary hover:border-primary text-lg hover:text-white" href="/"
 			>Snippet Manager</a
@@ -28,7 +28,7 @@
 	</div>
 	<div class="navbar-center hidden md:flex">
 		<ul class="menu menu-horizontal px-1">
-			<li><a href="/"><MdiText />Snippets</a></li>
+			<li><a href="/snippets"><MdiText />Snippets</a></li>
 			<li><a href="/categories"><MdiShapeOutline />Categories</a></li>
 		</ul>
 	</div>
@@ -50,9 +50,9 @@
 			</div>
 			<ul
 				tabindex="-1"
-				class="menu menu-md dropdown-content rounded-box z-1 mt-3 w-40 bg-white p-2 text-black shadow"
+				class="menu menu-md dropdown-content rounded-box mt-3 w-40 bg-white p-2 text-black shadow"
 			>
-				<li><a href="/"><MdiText />Snippets</a></li>
+				<li><a href="/snippets"><MdiText />Snippets</a></li>
 				<li><a href="/categories"><MdiShapeOutline />Categories</a></li>
 				<li><a href="/login"><MdiLogin />Login</a></li>
 				<div class="divider m-0"></div>
@@ -63,8 +63,10 @@
 	</div>
 </div>
 
-<div class="mt-12 flex h-full flex-col overflow-auto">
-	<main class="m-5 flex-1">
+<div class="mt-12 flex h-full flex-col items-center overflow-auto">
+	<main
+		class="min-w-full flex-1 p-5 sm:max-w-xl sm:min-w-xl md:max-w-2xl md:min-w-2xl lg:max-w-3xl lg:min-w-3xl xl:max-w-4xl xl:min-w-4xl"
+	>
 		{@render children()}
 	</main>
 
