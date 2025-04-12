@@ -1,0 +1,26 @@
+[
+	{
+		"id": 1,
+		"name": "First Category",
+		"color": "lightblue",
+		"times_used": 4
+	},
+	{
+		"id": 2,
+		"name": "Second Category",
+		"color": "orange",
+		"times_used": 1
+	},
+	{
+		"id": 3,
+		"name": "Third C.",
+		"color": "lightgreen",
+		"times_used": 4
+	},
+	{
+		"id": 4,
+		"name": "Jo",
+		"color": "lightpink",
+		"times_used": 0
+	}
+]

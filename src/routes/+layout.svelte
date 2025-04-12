@@ -70,7 +70,7 @@
 		{@render children()}
 	</main>
 
-	<footer class="footer footer-horizontal footer-center bg-base-300 text-base-content gap-3 p-5">
+	<footer class="footer footer-horizontal footer-center bg-secondary text-base-content gap-3 p-5">
 		<div class="grid grid-flow-col gap-4">
 			<a class="link link-hover" href="/imprint">Imprint</a>
 			<a class="link link-hover" href="/faq">FAQ</a>
