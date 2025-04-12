@@ -7,17 +7,17 @@
 		"categories": [
 			{
 				"id": 1,
-				"name": "Aaaa",
+				"name": "First Category",
 				"color": "lightblue"
 			},
 			{
 				"id": 2,
-				"name": "Bbbb",
+				"name": "Second Category",
 				"color": "orange"
 			},
 			{
 				"id": 3,
-				"name": "Cccc",
+				"name": "Third C.",
 				"color": "lightgreen"
 			}
 		]
@@ -30,12 +30,12 @@
 		"categories": [
 			{
 				"id": 1,
-				"name": "Aaaa",
+				"name": "First Category",
 				"color": "lightblue"
 			},
 			{
 				"id": 3,
-				"name": "Cccc",
+				"name": "Third C.",
 				"color": "lightgreen"
 			}
 		]
@@ -55,7 +55,7 @@
 		"categories": [
 			{
 				"id": 3,
-				"name": "Cccc",
+				"name": "Third C.",
 				"color": "lightgreen"
 			}
 		]
@@ -68,7 +68,7 @@
 		"categories": [
 			{
 				"id": 1,
-				"name": "Aaaa",
+				"name": "First Category",
 				"color": "lightblue"
 			}
 		]
@@ -81,12 +81,12 @@
 		"categories": [
 			{
 				"id": 1,
-				"name": "Aaaa",
+				"name": "First Category",
 				"color": "lightblue"
 			},
 			{
 				"id": 3,
-				"name": "Cccc",
+				"name": "Third C.",
 				"color": "lightgreen"
 			}
 		]
