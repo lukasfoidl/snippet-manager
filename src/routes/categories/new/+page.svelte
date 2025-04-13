@@ -33,7 +33,7 @@
 			oninput={handleNameInput}
 			class="input focus-within:border-primary validator w-full focus-within:outline-0"
 			style={nameError.length > 0 ? 'border-color: var(--color-error)' : ''}
-			placeholder="Alphabet"
+			placeholder="Latin"
 			pattern={nameRegex.source}
 			maxlength="20"
 		/>

@@ -38,5 +38,8 @@
 				</div>
 			</li>
 		{/each}
+		{#if categories.length === 0}
+			<li class="text-xs font-semibold whitespace-nowrap opacity-60">No categories found</li>
+		{/if}
 	</ul>
 </div>
