@@ -1,16 +1,17 @@
 <script lang="ts">
 	import MdiCopy from 'virtual:icons/mdi/content-copy';
-	import MdiPlus from 'virtual:icons/mdi/plus';
-	import MdiDatabaseOff from 'virtual:icons/mdi/database-off';
 	import MdiSearch from 'virtual:icons/mdi/magnify';
 	import MdiFilter from 'virtual:icons/mdi/filter-remove';
-	import MdiShapeOutline from 'virtual:icons/mdi/shape-outline';
+	import CategorySelector from '$lib/components/categorySelector.svelte';
+	import FloatingPlusButton from '$lib/components/floatingPlusButton.svelte';
+	import CategoryBadge from '$lib/components/categoryBadge.svelte';
+	import NoDataFound from '$lib/components/noDataFound.svelte';
 
 	const { data } = $props();
 	let snippets = data.snippets || [];
 	let categories = data.categories || [];
 
-	let filteredCategories = $state([]);
+	let selectedCategoryIds = $state([]);
 </script>
 
 <div class="mb-5 flex flex-row gap-1">
@@ -18,48 +19,19 @@
 		<MdiSearch class="h-5 w-5" />
 		<input type="input" placeholder="Search" />
 	</label>
-	<div class="dropdown dropdown-end">
-		<div tabindex="-1" role="button" class="btn btn-ghost p-2" title="Filter by category">
-			{#if filteredCategories.length > 0}
-				<div class="indicator">
-					<span class="indicator-item status status-primary"></span>
-					<MdiShapeOutline class="h-5 w-5" />
-				</div>
-			{:else}
-				<MdiShapeOutline class="h-5 w-5" />
-			{/if}
-		</div>
-		<ul
-			tabindex="-1"
-			class="dropdown-content rounded-box mt-3 flex flex-col gap-2 bg-white p-3 text-black shadow"
-		>
-			{#each categories as category (category.id)}
-				<li class="h-6">
-					<div class="flex flex-row items-center justify-between gap-2 whitespace-nowrap">
-						<div class="badge badge-sm border-0" style="background-color: {category.color}">
-							{category.name}
-						</div>
-						<input
-							type="checkbox"
-							value={category}
-							bind:group={filteredCategories}
-							class="checkbox checkbox-sm rounded-md"
-						/>
-					</div>
-				</li>
-			{/each}
-		</ul>
-	</div>
+	<CategorySelector
+		{categories}
+		bind:selectedCategoryIds
+		indicator={true}
+		title="Filter by category"
+	/>
 	<button class="btn btn-ghost p-2" title="Reset filter">
 		<MdiFilter class="h-5 w-5" />
 	</button>
 </div>
 
 {#if snippets.length === 0}
-	<div class="flex h-full flex-col items-center justify-center gap-2">
-		<MdiDatabaseOff class="text-primary h-20 w-20" />
-		<div class="text-primary">No data found</div>
-	</div>
+	<NoDataFound />
 {:else}
 	<ul class="list bg-base-100 rounded-box shadow-md">
 		{#each snippets as snippet (snippet.id)}
@@ -71,12 +43,7 @@
 					</div>
 					<div class="flex flex-wrap justify-end gap-1">
 						{#each snippet.categories as category (category.id)}
-							<div
-								class="badge badge-sm border-0 whitespace-nowrap"
-								style="background-color: {category.color}"
-							>
-								{category.name}
-							</div>
+							<CategoryBadge {category} />
 						{/each}
 					</div>
 				</div>
@@ -90,14 +57,5 @@
 		{/each}
 	</ul>
 {/if}
-<a
-	role="button"
-	href="/snippets/new"
-	class="
-    btn btn-primary btn-circle fixed right-5 bottom-15.5 z-50 h-15 w-15
-    shadow-lg sm:right-[calc(50%-19.75rem+1rem)] md:right-[calc(50%-22.75rem+1rem)] lg:right-[calc(50%-25.75rem+1rem)] xl:right-[calc(50%-29.75rem+1rem)]
-"
-	title="Add new snippet"
->
-	<MdiPlus class="text-white" width={25} height={25} />
-</a>
+
+<FloatingPlusButton href="/snippets/new" title="Add new snippet" />
