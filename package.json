@@ -40,6 +40,7 @@
 	},
 	"dependencies": {
 		"@iconify-json/mdi": "^1.2.3",
+		"@libsql/client": "^0.15.4",
 		"unplugin-icons": "^22.1.0"
 	}
 }

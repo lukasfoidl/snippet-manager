@@ -6,6 +6,8 @@
 	import MdiMenu from 'virtual:icons/mdi/menu';
 	import MdiMoon from 'virtual:icons/mdi/moon-waning-crescent';
 	import MdiTranslate from 'virtual:icons/mdi/translate';
+	import Toast from '$lib/components/toast.svelte';
+	import { toastMessage, toastType } from '$lib/stores/useToast';
 
 	let { children } = $props();
 
@@ -80,3 +82,5 @@
 		</div>
 	</footer>
 </div>
+
+<Toast message={$toastMessage} type={$toastType} />
