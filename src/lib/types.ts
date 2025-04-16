@@ -11,5 +11,3 @@ export type Category = {
 	name: string;
 	color: string;
 };
-
-export type ToastType = 'success' | 'error' | 'info';

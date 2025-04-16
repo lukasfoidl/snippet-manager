@@ -1,5 +1,5 @@
 export const usernameRegex = /^[a-zA-Z0-9 öäüÖÄÜß#&\-]{1,20}$/; // escaping necessary otherwise error in client console
-export const passwordRegex = /^.{8,}$/;
+export const passwordRegex = /^.{8,100}$/;
 export const nameRegex = /^[a-zA-Z0-9 öäüÖÄÜß#&\-]{1,20}$/; // escaping necessary otherwise error in client console
 export const titleRegex = /^[a-zA-Z0-9 öäüÖÄÜß#&\-]{1,20}$/; // escaping necessary otherwise error in client console
 export const descriptionRegex = /^[a-zA-Z0-9 öäüÖÄÜß#&\-]{0,50}$/; // escaping necessary otherwise error in client console

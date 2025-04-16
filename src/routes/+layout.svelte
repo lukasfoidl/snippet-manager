@@ -36,7 +36,7 @@
 	</div>
 	<div class="navbar-end">
 		<div class="hidden gap-2 md:flex">
-			<a role="button" class="btn btn-ghost px-2" href="/login">
+			<a role="button" class="btn btn-ghost px-2" href="/auth">
 				<MdiLogin width={20} height={20} />
 			</a>
 			<button class="btn btn-ghost px-2" onclick={changeLanguage}>
@@ -56,7 +56,7 @@
 			>
 				<li><a href="/snippets"><MdiText />Snippets</a></li>
 				<li><a href="/categories"><MdiShapeOutline />Categories</a></li>
-				<li><a href="/login"><MdiLogin />Login</a></li>
+				<li><a href="/auth"><MdiLogin />Login</a></li>
 				<div class="divider m-0"></div>
 				<li><button onclick={changeLanguage}><MdiTranslate />Language</button></li>
 				<li><button onclick={changeTheme}><MdiMoon />Darkmode</button></li>

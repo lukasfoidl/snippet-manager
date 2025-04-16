@@ -1,20 +1,20 @@
 <script lang="ts">
 	let {
-		onClick,
 		text,
 		type = 'button',
-		color = 'var(--color-primary)'
+		color = 'var(--color-primary)',
+		formaction = ''
 	}: {
-		onClick: () => void;
 		text: string;
 		type?: 'button' | 'submit' | 'reset';
 		color?: string;
+		formaction?: string;
 	} = $props();
 </script>
 
 <button
 	{type}
+	{formaction}
 	class="btn btn-primary w-25"
-	style="background-color: {color}; border-color: {color}"
-	onclick={onClick}>{text}</button
+	style="background-color: {color}; border-color: {color}">{text}</button
 >

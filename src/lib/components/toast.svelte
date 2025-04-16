@@ -1,5 +1,6 @@
 <script lang="ts">
-	import type { ToastType } from '$lib/types';
+	type ToastType = 'success' | 'error' | 'info';
+
 	import MdiClose from 'virtual:icons/mdi/close-octagon-outline';
 	import MdiCheck from 'virtual:icons/mdi/check-circle-outline';
 	import MdiInfo from 'virtual:icons/mdi/information-outline';
