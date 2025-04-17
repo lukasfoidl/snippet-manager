@@ -7,6 +7,8 @@
 	import { goto } from '$app/navigation';
 	import { showToast } from '$lib/stores/toast.js';
 
+	let loading = $state(false);
+
 	let username = $state('');
 	let password = $state('');
 
@@ -34,8 +36,12 @@
 			return;
 		}
 
+		loading = true;
+
 		// Callback function to handle the result of the form submission
 		return async ({ result }: { result: ActionResult }) => {
+			loading = false;
+
 			if (result.type === 'success') {
 				showToast(result.data?.message, 'success');
 				goto('/snippets', { invalidateAll: true });
@@ -84,9 +90,15 @@
 	</fieldset>
 	<div class="mt-5 flex w-full flex-row items-center justify-end gap-3 align-middle">
 		<!-- Used for calling login endpoint on pressing enter -->
-		<button formaction="?/login" type="submit" class="hidden">X</button>
+		<button disabled={loading} formaction="?/login" type="submit" class="hidden">X</button>
 
-		<SaveButton formaction="?/register" type="submit" text="Register" color="var(--color-accent)" />
-		<SaveButton formaction="?/login" type="submit" text="Login" />
+		<SaveButton
+			{loading}
+			formaction="?/register"
+			type="submit"
+			text="Register"
+			color="var(--color-accent)"
+		/>
+		<SaveButton {loading} formaction="?/login" type="submit" text="Login" />
 	</div>
 </form>

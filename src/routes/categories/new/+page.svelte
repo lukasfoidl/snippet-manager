@@ -34,6 +34,7 @@
 		// Callback function to handle the result of the form submission
 		return async ({ result }: { result: ActionResult }) => {
 			loading = false;
+
 			if (result.type === 'success') {
 				showToast(result.data?.message, 'success');
 				goto('/categories', { invalidateAll: true });
@@ -77,7 +78,7 @@
 		{/if}
 	</fieldset>
 	<div class="mt-5 inline-flex w-full justify-end gap-2">
-		<SaveButton disabled={loading} type="submit" text="Save" />
+		<SaveButton {loading} type="submit" text="Save" />
 	</div>
 </form>
 

@@ -51,7 +51,7 @@
 				</a>
 			{:else}
 				<div class="dropdown dropdown-end">
-					<div tabindex="-1" role="button" class="btn btn-ghost px-2">
+					<div tabindex="-1" role="button" class="btn btn-ghost px-2" title="User menu">
 						<MdiUser class="h-5 w-5" />
 					</div>
 					<ul
@@ -64,7 +64,7 @@
 			{/if}
 		</div>
 		<div class="dropdown dropdown-end">
-			<div tabindex="-1" role="button" class="btn btn-ghost md:hidden">
+			<div tabindex="-1" role="button" class="btn btn-ghost md:hidden" title="Menu">
 				<MdiMenu class="h-5 w-5" />
 			</div>
 			<ul
