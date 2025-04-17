@@ -5,7 +5,7 @@
 	import { validatePassword, validateUser, validateUsername } from '$lib/utils/validateUser.js';
 	import { type ActionResult } from '@sveltejs/kit';
 	import { goto } from '$app/navigation';
-	import { showToast } from '$lib/stores/useToast.js';
+	import { showToast } from '$lib/stores/toast.js';
 
 	let username = $state('');
 	let password = $state('');
@@ -38,7 +38,7 @@
 		return async ({ result }: { result: ActionResult }) => {
 			if (result.type === 'success') {
 				showToast(result.data?.message, 'success');
-				goto('/snippets');
+				goto('/snippets', { invalidateAll: true });
 			} else if (result.type === 'failure') {
 				showToast(result.data?.error, 'error');
 			}
