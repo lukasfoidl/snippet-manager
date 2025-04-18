@@ -1,7 +1,17 @@
 <script lang="ts">
+	import { enhance } from '$app/forms';
+	import { goto } from '$app/navigation';
 	import CategorySelector from '$lib/components/categorySelector.svelte';
 	import SaveButton from '$lib/components/saveButton.svelte';
-	import { contentRegex, descriptionRegex, titleRegex } from '$lib/utils/regex.js';
+	import { showToast } from '$lib/stores/toast.js';
+	import { descriptionRegex, titleRegex } from '$lib/utils/regex.js';
+	import {
+		validateContent,
+		validateDescription,
+		validateSnippet,
+		validateTitle
+	} from '$lib/utils/validateSnippet.js';
+	import type { ActionResult } from '@sveltejs/kit';
 
 	let title = $state('');
 	let description = $state('');
@@ -11,58 +21,63 @@
 	let descriptionError = $state('');
 	let contentError = $state('');
 
-	const validateTitle = (value: string) => {
-		return new RegExp(titleRegex).test(value);
-	};
-
 	const handleTitleInput = () => {
-		if (title.length === 0) {
-			titleError = 'Title is required!';
-		} else if (!validateTitle(title)) {
-			titleError = 'Invalid characters!';
-		} else {
-			titleError = '';
-		}
-	};
-
-	const validateDescription = (value: string) => {
-		return new RegExp(descriptionRegex).test(value);
+		const result = validateTitle(title);
+		titleError = result.success ? '' : (result.errors.title ?? '');
 	};
 
 	const handleDescriptionInput = () => {
-		if (!validateDescription(description)) {
-			descriptionError = 'Invalid characters!';
-		} else {
-			descriptionError = '';
-		}
-	};
-
-	const validateContent = (value: string) => {
-		return new RegExp(contentRegex).test(value);
+		const result = validateDescription(description);
+		descriptionError = result.success ? '' : (result.errors.description ?? '');
 	};
 
 	const handleContentInput = () => {
-		if (content.length === 0) {
-			contentError = 'Content is required!';
-		} else if (!validateContent(content)) {
-			contentError = 'Invalid characters!';
-		} else {
-			contentError = '';
-		}
+		const result = validateContent(content);
+		contentError = result.success ? '' : (result.errors.content ?? '');
 	};
 
 	const { data } = $props();
 	let categories = data.categories || [];
 
 	let selectedCategoryIds = $state([]);
+
+	let loading = $state(false);
+
+	// Called when the form is submitted to validate the inputs before submitting data
+	function customEnhance({ cancel }: { cancel: () => void }) {
+		const result = validateSnippet(title, description, content);
+
+		if (!result.success) {
+			titleError = result.errors.title ?? '';
+			descriptionError = result.errors.description ?? '';
+			contentError = result.errors.content ?? '';
+			cancel();
+			return;
+		}
+
+		loading = true;
+
+		// Callback function to handle the result of the form submission
+		return async ({ result }: { result: ActionResult }) => {
+			loading = false;
+
+			if (result.type === 'success') {
+				showToast(result.data?.message, 'success');
+				goto('/snippets', { invalidateAll: true });
+			} else if (result.type === 'failure') {
+				showToast(result.data?.error, 'error');
+			}
+		};
+	}
 </script>
 
-<form>
+<form method="post" novalidate use:enhance={customEnhance}>
 	<div class="inline-flex w-full gap-5">
 		<fieldset class="fieldset w-full">
 			<legend class="fieldset-legend text-sm">Title*</legend>
 			<input
 				type="text"
+				name="title"
 				bind:value={title}
 				oninput={handleTitleInput}
 				class="input focus-within:border-primary validator w-full focus-within:outline-0"
@@ -78,12 +93,14 @@
 		</fieldset>
 		<div class="flex flex-col justify-center">
 			<CategorySelector {categories} bind:selectedCategoryIds />
+			<input type="hidden" name="categoryIds" bind:value={selectedCategoryIds} />
 		</div>
 	</div>
 	<fieldset class="fieldset">
 		<legend class="fieldset-legend text-sm">Description</legend>
 		<input
 			type="text"
+			name="description"
 			bind:value={description}
 			oninput={handleDescriptionInput}
 			class="input focus-within:border-primary validator w-full focus-within:outline-0"
@@ -100,6 +117,7 @@
 	<fieldset class="fieldset">
 		<legend class="fieldset-legend text-sm">Content*</legend>
 		<textarea
+			name="content"
 			bind:value={content}
 			oninput={handleContentInput}
 			class="input focus-within:border-primary validator h-40 w-full focus-within:outline-0"
@@ -113,10 +131,6 @@
 		</div>
 	</fieldset>
 	<div class="mt-5 inline-flex w-full justify-end gap-2">
-		<SaveButton
-			onClick={() => console.log(title, description, content, selectedCategoryIds)}
-			text="Save"
-			type="submit"
-		/>
+		<SaveButton {loading} text="Save" type="submit" />
 	</div>
 </form>

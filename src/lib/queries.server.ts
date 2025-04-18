@@ -1,3 +1,12 @@
+export const categoriesLeanQuery = `
+    SELECT
+        c.id AS id
+    FROM
+        categories c
+    WHERE
+        c.user_id = ?;
+    `;
+
 export const categoriesBaseQuery = `
     SELECT
         c.id AS id,

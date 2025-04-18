@@ -29,7 +29,7 @@ export const actions = {
 
 			return { success: true, message: 'Category created successfully!' };
 		} catch {
-			return fail(500, { error: 'Failed saving category!' });
+			return fail(500, { error: 'Failed creating category!' });
 		}
 	}
 };
