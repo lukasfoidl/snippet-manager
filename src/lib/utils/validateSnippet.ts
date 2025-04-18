@@ -46,9 +46,7 @@ export function validateTitle(title: string): SnippetValidationResult {
 export function validateDescription(description: string): SnippetValidationResult {
 	const errors: SnippetValidationResult['errors'] = {};
 
-	if (!description.trim()) {
-		errors.description = 'Description is required!';
-	} else if (!descriptionRegex.test(description)) {
+	if (!descriptionRegex.test(description)) {
 		errors.description = 'Invalid description format!';
 	}
 

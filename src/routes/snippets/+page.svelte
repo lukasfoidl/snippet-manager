@@ -6,12 +6,25 @@
 	import FloatingPlusButton from '$lib/components/floatingPlusButton.svelte';
 	import CategoryBadge from '$lib/components/categoryBadge.svelte';
 	import NoDataFound from '$lib/components/noDataFound.svelte';
+	import { showToast } from '$lib/stores/toast';
 
 	const { data } = $props();
 	let snippets = data.snippets || [];
 	let categories = data.categories || [];
 
 	let selectedCategoryIds = $state([]);
+
+	function copyToClipboard(text: string) {
+		navigator.clipboard
+			.writeText(text)
+			.then(() => {
+				showToast('Copied to clipboard!', 'success');
+			})
+			.catch((err) => {
+				console.log(err);
+				showToast('Failed copying to clipboard', 'error');
+			});
+	}
 </script>
 
 <div class="mb-5 flex flex-row gap-1">
@@ -49,9 +62,13 @@
 				</div>
 				<div class="list-col-wrap col-span-2 inline-flex items-center justify-between gap-1">
 					<p class="line-clamp-3 text-xs">{snippet.content}</p>
-					<div role="button" class="btn btn-ghost h-15 w-15 p-0" title="Copy to clipboard">
+					<button
+						class="btn btn-ghost h-15 w-15 p-0 hover:border-transparent hover:bg-transparent"
+						title="Copy to clipboard"
+						onclick={() => copyToClipboard(snippet.content)}
+					>
 						<MdiCopy width={20} height={20} />
-					</div>
+					</button>
 				</div>
 			</li>
 		{/each}
