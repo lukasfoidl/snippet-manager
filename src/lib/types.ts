@@ -10,6 +10,7 @@ export type Category = {
 	id: number;
 	name: string;
 	color: string;
+	usage_count: number | undefined;
 };
 
 export type ToastType = 'success' | 'error' | 'info';
