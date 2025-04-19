@@ -10,6 +10,7 @@
 	import Toast from '$lib/components/toast.svelte';
 	import { toastMessage, toastType } from '$lib/stores/toast';
 	import LogoutListItem from '$lib/components/logoutListItem.svelte';
+	import DeleteDialog from '$lib/components/deleteDialog.svelte';
 
 	export let data;
 	export let children;
@@ -106,3 +107,4 @@
 </div>
 
 <Toast message={$toastMessage} type={$toastType} />
+<DeleteDialog />

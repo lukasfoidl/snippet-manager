@@ -3,7 +3,7 @@ import { validateCategory } from '$lib/utils/validateCategory.js';
 import { fail } from '@sveltejs/kit';
 
 export const actions = {
-	default: async ({ request, locals }) => {
+	save: async ({ request, locals }) => {
 		const user = locals.user;
 
 		if (!user || !user.id) {

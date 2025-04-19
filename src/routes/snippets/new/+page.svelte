@@ -2,7 +2,7 @@
 	import { enhance } from '$app/forms';
 	import { goto } from '$app/navigation';
 	import CategorySelector from '$lib/components/categorySelector.svelte';
-	import SaveButton from '$lib/components/saveButton.svelte';
+	import StandardButton from '$lib/components/standardButton.svelte';
 	import { showToast } from '$lib/stores/toast.js';
 	import { descriptionRegex, titleRegex } from '$lib/utils/regex.js';
 	import {
@@ -131,6 +131,6 @@
 		</div>
 	</fieldset>
 	<div class="mt-5 inline-flex w-full justify-end gap-2">
-		<SaveButton {loading} text="Save" type="submit" />
+		<StandardButton {loading} text="Save" type="submit" />
 	</div>
 </form>

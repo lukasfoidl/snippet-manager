@@ -1,5 +1,5 @@
 <script lang="ts">
-	import SaveButton from '$lib/components/saveButton.svelte';
+	import StandardButton from '$lib/components/standardButton.svelte';
 	import { passwordRegex, usernameRegex } from '$lib/utils/regex';
 	import { enhance } from '$app/forms';
 	import { validatePassword, validateUser, validateUsername } from '$lib/utils/validateUser.js';
@@ -92,13 +92,13 @@
 		<!-- Used for calling login endpoint on pressing enter -->
 		<button disabled={loading} formaction="?/login" type="submit" class="hidden">X</button>
 
-		<SaveButton
+		<StandardButton
 			{loading}
 			formaction="?/register"
 			type="submit"
 			text="Register"
-			color="var(--color-accent)"
+			colorClass="btn-accent"
 		/>
-		<SaveButton {loading} formaction="?/login" type="submit" text="Login" />
+		<StandardButton {loading} formaction="?/login" type="submit" text="Login" />
 	</div>
 </form>

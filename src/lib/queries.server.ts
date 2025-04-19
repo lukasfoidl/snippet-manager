@@ -1,3 +1,44 @@
+export const categoryQuery = `
+    SELECT
+        c.id as id,
+        c.name as name,
+        c.color as color
+    FROM
+        categories c
+    WHERE
+        c.user_id = ?
+    AND
+        c.id = ?;
+    `;
+
+export const updateCategoryStatement = `
+    UPDATE 
+        categories
+    SET
+        name = ?,
+        color = ?
+    WHERE
+        user_id = ?
+    AND
+        id = ?;
+`;
+
+export const deleteSnippetsCategoriesCategoryStatement = `
+    DELETE FROM 
+        snippets_categories
+    WHERE
+        category_id = ?;
+`;
+
+export const deleteCategoryStatement = `
+    DELETE FROM 
+        categories
+    WHERE
+        user_id = ?
+    AND
+        id = ?
+`;
+
 export const categoriesLeanQuery = `
     SELECT
         c.id AS id
