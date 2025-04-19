@@ -1,9 +1,9 @@
 import {
 	categoryQuery,
 	deleteCategoryStatement,
-	deleteSnippetsCategoriesCategoryStatement,
+	deleteSnippetsCategoriesStatement,
 	updateCategoryStatement
-} from '$lib/queries.server';
+} from '$lib/sql/categoriesQueries.server';
 import { db } from '$lib/turso';
 import type { Category } from '$lib/types';
 import { validateCategory } from '$lib/utils/validateCategory.js';
@@ -50,7 +50,11 @@ export const actions = {
 		}
 
 		try {
-			await db.execute(updateCategoryStatement, [name, hex, user.id, params.id]);
+			const result = await db.execute(updateCategoryStatement, [name, hex, user.id, params.id]);
+
+			if (result.rowsAffected !== 1) {
+				throw new Error('Error updating category!');
+			}
 
 			return { success: true, message: 'Category updated successfully!' };
 		} catch {
@@ -68,10 +72,15 @@ export const actions = {
 
 		try {
 			await tx.execute({
-				sql: deleteSnippetsCategoriesCategoryStatement,
+				sql: deleteSnippetsCategoriesStatement,
 				args: [params.id]
 			});
-			await tx.execute({ sql: deleteCategoryStatement, args: [user.id, params.id] });
+
+			const result = await tx.execute({ sql: deleteCategoryStatement, args: [user.id, params.id] });
+
+			if (result.rowsAffected !== 1) {
+				throw new Error('Error deleting category!');
+			}
 
 			await tx.commit();
 

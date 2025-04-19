@@ -9,7 +9,7 @@
 
 	$effect(() => {
 		if (!category) {
-			showToast('Category not found', 'error');
+			showToast('Category not found!', 'error');
 			goto('/categories');
 		}
 	});

@@ -39,7 +39,6 @@
 						selectedCategoryIds.every((id) =>
 							snippet.categories.some((category) => category.id === id)
 						))
-					// snippet.categories.some((category) => $selectedCategoryIds.includes(category.id)))
 				);
 			});
 		}
@@ -59,7 +58,10 @@
 		searchStore.set('');
 	}
 
-	function copyToClipboard(text: string) {
+	function copyToClipboard(event: Event, text: string) {
+		event.stopPropagation();
+		event.preventDefault();
+
 		navigator.clipboard
 			.writeText(text)
 			.then(() => {
@@ -101,7 +103,7 @@
 {:else}
 	<ul class="list bg-base-100 rounded-box shadow-md">
 		{#each $filteredSnippets as snippet (snippet.id)}
-			<li class="list-row hover:bg-base-300">
+			<a class="list-row hover:bg-base-300" href={`/snippets/${snippet.id}`}>
 				<div class="col-span-2 inline-flex justify-between">
 					<div>
 						<div class="font-bold">{snippet.title}</div>
@@ -118,12 +120,12 @@
 					<button
 						class="btn btn-ghost h-15 w-15 p-0 hover:border-transparent hover:bg-transparent"
 						title="Copy to clipboard"
-						onclick={() => copyToClipboard(snippet.content)}
+						onclick={(event) => copyToClipboard(event, snippet.content)}
 					>
 						<MdiCopy width={20} height={20} />
 					</button>
 				</div>
-			</li>
+			</a>
 		{/each}
 	</ul>
 {/if}

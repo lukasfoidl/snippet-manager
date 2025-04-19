@@ -23,7 +23,7 @@ export const updateCategoryStatement = `
         id = ?;
 `;
 
-export const deleteSnippetsCategoriesCategoryStatement = `
+export const deleteSnippetsCategoriesStatement = `
     DELETE FROM 
         snippets_categories
     WHERE
@@ -79,23 +79,8 @@ export const categoriesExtendedQuery = `
         c.created_at DESC;
     `;
 
-export const snippetsQuery = `
-    SELECT
-        s.id AS id,
-        s.title AS title,
-        s.description AS description,
-        s.content AS content,
-        c.id AS category_id,
-        c.name AS category_name,
-        c.color AS category_color
-    FROM
-        snippets s
-    LEFT JOIN
-        snippets_categories sc ON s.id = sc.snippet_id
-    LEFT JOIN
-        categories c ON sc.category_id = c.id
-    WHERE
-        s.user_id = ?
-    ORDER BY
-        s.created_at DESC;
-    `;
+export const insertCategoryStatement = `
+    INSERT INTO
+        categories (user_id, name, color)
+    VALUES (?, ?, ?)
+`;

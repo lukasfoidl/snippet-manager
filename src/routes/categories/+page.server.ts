@@ -1,4 +1,4 @@
-import { categoriesExtendedQuery } from '$lib/queries.server.js';
+import { categoriesExtendedQuery } from '$lib/sql/categoriesQueries.server';
 import { db } from '$lib/turso';
 import type { Category } from '$lib/types.js';
 import { fail } from '@sveltejs/kit';

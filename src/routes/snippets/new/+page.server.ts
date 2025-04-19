@@ -1,8 +1,12 @@
-import { categoriesBaseQuery, categoriesLeanQuery } from '$lib/queries.server';
 import { db } from '$lib/turso';
-import type { Category } from '$lib/types';
 import { validateSnippet } from '$lib/utils/validateSnippet';
 import { fail } from '@sveltejs/kit';
+import { prepareCategories, validateCategories } from '../server.js';
+import { categoriesBaseQuery } from '$lib/sql/categoriesQueries.server.js';
+import {
+	insertSnippetsCategoriesStatement,
+	insertSnippetStatement
+} from '$lib/sql/snippetsQueries.server.js';
 
 export async function load({ locals }) {
 	const user = locals.user;
@@ -13,13 +17,7 @@ export async function load({ locals }) {
 
 	try {
 		const result = await db.execute(categoriesBaseQuery, [user.id]);
-
-		const categories: Category[] = result.rows.map((row) => ({
-			id: Number(row.id),
-			name: row.name as string,
-			color: row.color as string,
-			usage_count: Number(row.count)
-		}));
+		const categories = prepareCategories(result);
 
 		return { success: true, categories: categories };
 	} catch {
@@ -28,7 +26,7 @@ export async function load({ locals }) {
 }
 
 export const actions = {
-	default: async ({ request, locals }) => {
+	save: async ({ request, locals }) => {
 		const user = locals.user;
 
 		if (!user || !user.id) {
@@ -56,7 +54,7 @@ export const actions = {
 
 		try {
 			const result = await tx.execute({
-				sql: `INSERT INTO snippets (user_id, title, description, content) VALUES (?, ?, ?, ?)`,
+				sql: insertSnippetStatement,
 				args: [user.id, title, description, content]
 			});
 
@@ -64,7 +62,7 @@ export const actions = {
 
 			for (const categoryId of categoryIds) {
 				await tx.execute({
-					sql: `INSERT INTO snippets_categories (snippet_id, category_id) VALUES (?, ?)`,
+					sql: insertSnippetsCategoriesStatement,
 					args: [snippetId, categoryId]
 				});
 			}
@@ -77,31 +75,3 @@ export const actions = {
 		}
 	}
 };
-
-async function validateCategories(
-	userId: number,
-	ids: number[]
-): Promise<{ success: boolean; error: string }> {
-	let dbIds: number[] = [];
-
-	if (ids.length > 0) {
-		try {
-			dbIds = (await db.execute(categoriesLeanQuery, [userId])).rows.map((row) => {
-				return row.id as number;
-			});
-
-			for (const id of ids) {
-				if (!dbIds.includes(id)) {
-					return { success: false, error: 'Invalid inputs!' };
-				}
-			}
-		} catch {
-			return { success: false, error: 'Failed to validate categories!' };
-		}
-	}
-
-	return {
-		success: true,
-		error: ''
-	};
-}

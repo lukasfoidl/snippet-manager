@@ -1,3 +1,4 @@
+import { insertCategoryStatement } from '$lib/sql/categoriesQueries.server.js';
 import { db } from '$lib/turso';
 import { validateCategory } from '$lib/utils/validateCategory.js';
 import { fail } from '@sveltejs/kit';
@@ -21,11 +22,7 @@ export const actions = {
 
 		try {
 			// Add category to the database
-			await db.execute('INSERT INTO categories (user_id, name, color) VALUES (?, ?, ?)', [
-				user.id,
-				name,
-				hex
-			]);
+			await db.execute(insertCategoryStatement, [user.id, name, hex]);
 
 			return { success: true, message: 'Category created successfully!' };
 		} catch {

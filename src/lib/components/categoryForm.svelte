@@ -51,7 +51,7 @@
 		showModal(
 			'deleteDialog',
 			'Do you really want to delete this category?',
-			'For snippets that still use this category, the category will also be removed there.',
+			'Snippets using this category will not be deleted.',
 			'/categories/' + category.id + '?/delete',
 			'/categories'
 		);

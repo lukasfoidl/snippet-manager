@@ -1,4 +1,9 @@
 import { signJWT } from '$lib/auth.server.js';
+import {
+	baseUserQuery,
+	insertUserStatement,
+	secureUserQuery
+} from '$lib/sql/authQueries.server.js';
 import { db } from '$lib/turso';
 import { validateUser } from '$lib/utils/validateUser.js';
 import { fail, type Cookies } from '@sveltejs/kit';
@@ -19,7 +24,7 @@ export const actions = {
 		try {
 			// Check if username already exists
 			const result = await tx.execute({
-				sql: 'SELECT id FROM users WHERE username LIKE ?',
+				sql: baseUserQuery,
 				args: [username]
 			});
 
@@ -29,7 +34,7 @@ export const actions = {
 
 			// Add user to the database
 			const result2 = await tx.execute({
-				sql: 'INSERT INTO users (username, password) VALUES (?, ?)',
+				sql: insertUserStatement,
 				args: [username, password]
 			});
 
@@ -57,10 +62,7 @@ export const actions = {
 		}
 
 		try {
-			const result = await db.execute(
-				'SELECT id FROM users WHERE username LIKE ? AND password LIKE ?',
-				[username, password]
-			);
+			const result = await db.execute(secureUserQuery, [username, password]);
 
 			if (result.rows && result.rows.length !== 1) {
 				return fail(400, { error: 'Invalid credentials!' });
