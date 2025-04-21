@@ -11,7 +11,7 @@
 </script>
 
 <div class="dropdown dropdown-end">
-	<div tabindex="-1" role="button" class="btn btn-ghost p-2" {title}>
+	<div tabindex="0" role="button" class="btn btn-ghost p-2" {title}>
 		{#if selectedCategoryIds.length > 0 && indicator}
 			<div class="indicator">
 				<span class="indicator-item status status-primary"></span>

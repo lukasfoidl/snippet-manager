@@ -7,6 +7,9 @@ import {
 import { db } from '$lib/turso';
 import { validateUser } from '$lib/utils/validateUser.js';
 import { fail, type Cookies } from '@sveltejs/kit';
+import { get } from 'svelte/store';
+import { t } from '$lib/i18n/wrapper';
+import type { Language } from '$lib/types.js';
 
 export const actions = {
 	register: async ({ request, cookies }) => {
@@ -29,7 +32,7 @@ export const actions = {
 			});
 
 			if (result.rows && result.rows[0] && Number(result.rows[0][0]) > 0) {
-				return fail(400, { error: 'Username already exists!' });
+				return fail(400, { error: get(t)('auth.validation.username.duplicate') });
 			}
 
 			// Add user to the database
@@ -82,6 +85,20 @@ export const actions = {
 		cookies.delete('jwt', { path: '/' });
 
 		return { success: true, message: 'Logged out successfully!' };
+	},
+	lang: async ({ request, cookies }) => {
+		const formData = await request.formData();
+
+		const lang = (formData.get('lang')?.toString() as Language) ?? 'en';
+
+		cookies.set('lang', lang, {
+			path: '/',
+			httpOnly: true,
+			sameSite: 'lax',
+			secure: true
+		});
+
+		return { success: true, lang: lang };
 	}
 };
 

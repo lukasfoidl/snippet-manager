@@ -6,6 +6,7 @@
 	import { type ActionResult } from '@sveltejs/kit';
 	import { goto } from '$app/navigation';
 	import { showToast } from '$lib/stores/toast.js';
+	import { t } from '$lib/i18n/wrapper';
 
 	let loading = $state(false);
 
@@ -54,7 +55,7 @@
 
 <form method="post" novalidate use:enhance={customEnhance}>
 	<fieldset class="fieldset w-full">
-		<legend class="fieldset-legend text-sm">Username*</legend>
+		<legend class="fieldset-legend text-sm">{$t('auth.username')}</legend>
 		<input
 			type="text"
 			name="username"
@@ -72,7 +73,7 @@
 		</div>
 	</fieldset>
 	<fieldset class="fieldset">
-		<legend class="fieldset-legend text-sm">Password*</legend>
+		<legend class="fieldset-legend text-sm">{$t('auth.password')}</legend>
 		<input
 			type="password"
 			name="password"
@@ -96,9 +97,9 @@
 			{loading}
 			formaction="?/register"
 			type="submit"
-			text="Register"
+			text={$t('auth.register')}
 			colorClass="btn-accent"
 		/>
-		<StandardButton {loading} formaction="?/login" type="submit" text="Login" />
+		<StandardButton {loading} formaction="?/login" type="submit" text={$t('auth.login')} />
 	</div>
 </form>

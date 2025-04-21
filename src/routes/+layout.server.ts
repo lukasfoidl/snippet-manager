@@ -1,5 +1,6 @@
 export async function load({ locals }) {
 	return {
-		user: locals.user
+		user: locals.user,
+		lang: locals.lang
 	};
 }

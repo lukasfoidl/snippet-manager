@@ -14,3 +14,9 @@ export type Category = {
 };
 
 export type ToastType = 'success' | 'error' | 'info';
+
+export type Language = 'en' | 'de';
+export const languages: { code: Language; name: string }[] = [
+	{ code: 'en', name: 'English' },
+	{ code: 'de', name: 'German' }
+];

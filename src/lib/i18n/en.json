@@ -1,0 +1,20 @@
+{
+	"auth": {
+		"username": "Username*",
+		"password": "Password*",
+		"login": "Login",
+		"register": "Register",
+		"validation": {
+			"username": {
+				"required": "Username is required!",
+				"format": "Invalid format!",
+				"duplicate": "Username already exists!"
+			},
+			"password": {
+				"required": "Password is required!",
+				"format": "Password must be at least 8 characters!"
+			}
+		}
+	},
+	"test": "Bonjour"
+}

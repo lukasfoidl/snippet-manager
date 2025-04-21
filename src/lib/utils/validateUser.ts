@@ -1,4 +1,6 @@
+import { get } from 'svelte/store';
 import { usernameRegex, passwordRegex } from './regex';
+import { t } from '$lib/i18n/wrapper';
 
 export type UserValidationResult = {
 	success: boolean;
@@ -25,9 +27,9 @@ export function validateUsername(username: string): UserValidationResult {
 	const errors: UserValidationResult['errors'] = {};
 
 	if (!username.trim()) {
-		errors.username = 'Username is required!';
+		errors.username = get(t)('auth.validation.username.required');
 	} else if (!usernameRegex.test(username)) {
-		errors.username = 'Invalid username format!';
+		errors.username = get(t)('auth.validation.username.format');
 	}
 
 	return {
@@ -40,9 +42,9 @@ export function validatePassword(password: string): UserValidationResult {
 	const errors: UserValidationResult['errors'] = {};
 
 	if (!password.trim()) {
-		errors.password = 'Password is required!';
+		errors.password = get(t)('auth.validation.password.required');
 	} else if (!passwordRegex.test(password)) {
-		errors.password = 'Password must be at least 8 characters!';
+		errors.password = get(t)('auth.validation.password.format');
 	}
 
 	return {

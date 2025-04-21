@@ -79,7 +79,7 @@
 			</div>
 		</fieldset>
 		<div class="flex flex-col justify-center">
-			<input type="color" name="hex" bind:value={hex} class="color-picker" />
+			<input type="color" name="hex" bind:value={hex} class="color-picker" title="Pick a colour" />
 		</div>
 	</div>
 	<fieldset class="fieldset w-full">
