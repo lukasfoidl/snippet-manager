@@ -8,6 +8,7 @@
 	import { showToast } from '$lib/stores/toast';
 	import { goto } from '$app/navigation';
 	import { languages } from '$lib/types';
+	import { t } from '$lib/i18n/wrapper';
 
 	const { currentLang } = $props();
 
@@ -33,7 +34,7 @@
 <form method="POST" action="/auth?/lang" use:enhance={customEnhance}>
 	<ul
 		tabindex="-1"
-		class="menu menu-md dropdown-content rounded-box mt-3 w-25 bg-white p-2 text-black shadow"
+		class="menu menu-md dropdown-content rounded-box bg-base-100 text-base-content mt-3 w-25 p-2 shadow"
 	>
 		{#each extendedLangs as lang}
 			<li>
@@ -42,7 +43,7 @@
 					name="lang"
 					value={lang.code}
 					class="btn btn-ghost justify-between"
-					title={lang.name}
+					title={$t(lang.translation)}
 				>
 					<lang.icon />
 					<MdiCheck class={currentLang === lang.code ? '' : 'hidden'} />

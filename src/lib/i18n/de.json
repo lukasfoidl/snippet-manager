@@ -76,6 +76,10 @@
 		"cancel": "Abbrechen",
 		"delete": "Löschen"
 	},
+	"languages": {
+		"de": "Deutsch",
+		"en": "Englisch"
+	},
 	"layout": {
 		"categories": "Kategorien",
 		"darkmode": "Dunkelmodus",

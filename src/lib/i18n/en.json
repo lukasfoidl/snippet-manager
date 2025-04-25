@@ -76,11 +76,15 @@
 		"cancel": "Cancel",
 		"delete": "Delete"
 	},
+	"languages": {
+		"de": "German",
+		"en": "English"
+	},
 	"layout": {
 		"categories": "Categories",
 		"darkmode": "Darkmode",
 		"language": "Language",
-		"lighmode": "Lighmode",
+		"lightmode": "Lightmode",
 		"login": "Login",
 		"logout": "Logout",
 		"menu": "Menu",

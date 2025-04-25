@@ -24,7 +24,7 @@
 	</div>
 	<ul
 		tabindex="-1"
-		class="dropdown-content rounded-box mt-3 flex flex-col gap-2 bg-white p-3 text-black shadow"
+		class="dropdown-content rounded-box bg-base-100 mt-3 flex flex-col gap-2 p-3 shadow"
 	>
 		{#each categories as category (category.id)}
 			<li class="h-6">

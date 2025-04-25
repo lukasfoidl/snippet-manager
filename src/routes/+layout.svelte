@@ -6,6 +6,7 @@
 	import MdiMenu from 'virtual:icons/mdi/menu';
 	import MdiUser from 'virtual:icons/mdi/account';
 	import MdiMoon from 'virtual:icons/mdi/moon-waning-crescent';
+	import MdiSun from 'virtual:icons/mdi/white-balance-sunny';
 	import MdiTranslate from 'virtual:icons/mdi/translate';
 	import Toast from '$lib/components/toast.svelte';
 	import { toastMessage, toastType } from '$lib/stores/toast';
@@ -20,11 +21,7 @@
 	i18n.changeLanguage(data.lang); // set initial correct server language
 
 	let showLangDropdown = $state(false);
-
-	function changeTheme(e: Event) {
-		console.log('darkmode');
-		(e?.currentTarget as HTMLElement)?.blur();
-	}
+	let darkmode = $state(false);
 
 	function toggleLangDropdown() {
 		showLangDropdown = !showLangDropdown;
@@ -35,6 +32,10 @@
 		setTimeout(() => {
 			showLangDropdown = false;
 		}, 100);
+	}
+
+	function onChangeTheme() {
+		(document.activeElement as HTMLElement)?.blur();
 	}
 </script>
 
@@ -62,9 +63,23 @@
 					</div>
 					<LanguageDropdownList currentLang={data.lang} />
 				</div>
-				<button class="btn btn-ghost pr-1 pl-2" onclick={changeTheme} title={$t('layout.darkmode')}>
-					<MdiMoon class="h-5 w-5" />
-				</button>
+				<label
+					class="swap btn btn-ghost px-2"
+					title={darkmode ? $t('layout.lightmode') : $t('layout.darkmode')}
+				>
+					<input
+						type="checkbox"
+						class="theme-controller hidden"
+						value="blueberry-dark"
+						bind:checked={darkmode}
+					/>
+					<div class="swap-on">
+						<MdiSun class="h-5 w-5" />
+					</div>
+					<div class="swap-off">
+						<MdiMoon class="h-5 w-5" />
+					</div>
+				</label>
 				{#if data.user === undefined}
 					<a role="button" class="btn btn-ghost px-2" href="/auth" title={$t('layout.login')}>
 						<MdiLogin class="h-5 w-5" />
@@ -81,7 +96,7 @@
 						</div>
 						<ul
 							tabindex="-1"
-							class="menu menu-md dropdown-content rounded-box mt-3 w-40 bg-white p-2 text-black shadow"
+							class="menu menu-md dropdown-content rounded-box bg-base-100 text-base-content mt-3 w-40 p-2 shadow"
 						>
 							<LogoutListItem {data} />
 						</ul>
@@ -94,7 +109,7 @@
 				</div>
 				<ul
 					tabindex="-1"
-					class="menu menu-md dropdown-content rounded-box mt-3 w-40 bg-white p-2 text-black shadow"
+					class="menu menu-md dropdown-content rounded-box bg-base-100 text-base-content mt-3 w-40 p-2 shadow"
 				>
 					<li><a href="/snippets"><MdiText />{$t('layout.snippets')}</a></li>
 					<li><a href="/categories"><MdiShapeOutline />{$t('layout.categories')}</a></li>
@@ -109,7 +124,17 @@
 							<LanguageDropdownList currentLang={data.lang} />
 						{/if}
 					</div>
-					<li><button onclick={changeTheme}><MdiMoon />{$t('layout.darkmode')}</button></li>
+					<label class="btn btn-ghost swap place-content-stretch p-0 font-normal">
+						<input
+							type="checkbox"
+							class="theme-controller hidden"
+							value="blueberry-dark"
+							bind:checked={darkmode}
+							onclick={onChangeTheme}
+						/>
+						<li class="swap-off"><div><MdiMoon />{$t('layout.darkmode')}</div></li>
+						<li class="swap-on"><div><MdiSun />{$t('layout.lightmode')}</div></li>
+					</label>
 					<div class="divider m-0"></div>
 					{#if data.user === undefined}
 						<li><a href="/auth"><MdiLogin />Login</a></li>
