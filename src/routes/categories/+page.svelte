@@ -2,6 +2,7 @@
 	import CategoryBadge from '$lib/components/categoryBadge.svelte';
 	import FloatingPlusButton from '$lib/components/floatingPlusButton.svelte';
 	import NoDataFound from '$lib/components/noDataFound.svelte';
+	import { t } from '$lib/i18n/wrapper.js';
 
 	const { data } = $props();
 	let categories = data.categories || [];
@@ -23,4 +24,4 @@
 	</ul>
 {/if}
 
-<FloatingPlusButton href="/categories/new" title="Add new category" />
+<FloatingPlusButton href="/categories/new" title={$t('categories.add')} />

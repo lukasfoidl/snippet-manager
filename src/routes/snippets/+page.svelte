@@ -10,6 +10,7 @@
 	import { showToast } from '$lib/stores/toast';
 	import { derived, writable } from 'svelte/store';
 	import type { Snippet } from '$lib/types.js';
+	import { t } from '$lib/i18n/wrapper.js';
 
 	const { data } = $props();
 	let snippets = data.snippets || [];
@@ -65,11 +66,11 @@
 		navigator.clipboard
 			.writeText(text)
 			.then(() => {
-				showToast('Copied to clipboard!', 'success');
+				showToast($t('snippets.copyToClipboard.success'), 'success');
 			})
 			.catch((err) => {
 				console.log(err);
-				showToast('Failed copying to clipboard', 'error');
+				showToast($t('snippets.copyToClipboard.error'), 'error');
 			});
 	}
 
@@ -82,8 +83,17 @@
 <div class="mb-5 flex flex-row gap-1">
 	<label class="input focus-within:border-primary w-full focus-within:outline-0">
 		<MdiSearch class="h-5 w-5" />
-		<input type="input" placeholder="Search" bind:value={search} oninput={setSearch} />
-		<button class="btn btn-ghost h-7 w-7 p-0" onclick={clearSearch} title="Clear search">
+		<input
+			type="input"
+			placeholder={$t('snippets.filter.placeholder')}
+			bind:value={search}
+			oninput={setSearch}
+		/>
+		<button
+			class="btn btn-ghost h-7 w-7 p-0"
+			onclick={clearSearch}
+			title={$t('snippets.filter.clearSearch')}
+		>
 			<MdiClose class="h-5 w-5" />
 		</button>
 	</label>
@@ -91,9 +101,9 @@
 		{categories}
 		bind:selectedCategoryIds
 		indicator={true}
-		title="Filter by category"
+		title={$t('snippets.filter.filterByCategory')}
 	/>
-	<button class="btn btn-ghost p-2" title="Reset filter" onclick={resetFilter}>
+	<button class="btn btn-ghost p-2" title={$t('snippets.filter.reset')} onclick={resetFilter}>
 		<MdiFilter class="h-5 w-5" />
 	</button>
 </div>
@@ -119,7 +129,7 @@
 					<p class="line-clamp-3 text-xs">{snippet.content}</p>
 					<button
 						class="btn btn-ghost h-15 w-15 p-0 hover:border-transparent hover:bg-transparent"
-						title="Copy to clipboard"
+						title={$t('snippets.copyToClipboard.title')}
 						onclick={(event) => copyToClipboard(event, snippet.content)}
 					>
 						<MdiCopy width={20} height={20} />
@@ -130,4 +140,4 @@
 	</ul>
 {/if}
 
-<FloatingPlusButton href="/snippets/new" title="Add new snippet" />
+<FloatingPlusButton href="/snippets/new" title={$t('snippets.add')} />

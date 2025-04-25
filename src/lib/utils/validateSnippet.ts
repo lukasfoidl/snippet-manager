@@ -1,4 +1,6 @@
+import { get } from 'svelte/store';
 import { contentRegex, descriptionRegex, titleRegex } from './regex';
+import { t } from '$lib/i18n/wrapper';
 
 export type SnippetValidationResult = {
 	success: boolean;
@@ -32,9 +34,9 @@ export function validateTitle(title: string): SnippetValidationResult {
 	const errors: SnippetValidationResult['errors'] = {};
 
 	if (!title.trim()) {
-		errors.title = 'Title is required!';
+		errors.title = get(t)('snippets.validation.title.required');
 	} else if (!titleRegex.test(title)) {
-		errors.title = 'Invalid title format!';
+		errors.title = get(t)('snippets.validation.title.format');
 	}
 
 	return {
@@ -47,7 +49,7 @@ export function validateDescription(description: string): SnippetValidationResul
 	const errors: SnippetValidationResult['errors'] = {};
 
 	if (!descriptionRegex.test(description)) {
-		errors.description = 'Invalid description format!';
+		errors.description = get(t)('snippets.validation.description.format');
 	}
 
 	return {
@@ -60,9 +62,9 @@ export function validateContent(content: string): SnippetValidationResult {
 	const errors: SnippetValidationResult['errors'] = {};
 
 	if (!content.trim()) {
-		errors.content = 'Content is required!';
+		errors.content = get(t)('snippets.validation.content.required');
 	} else if (!contentRegex.test(content)) {
-		errors.content = 'Invalid content format!';
+		errors.content = get(t)('snippets.validation.content.format');
 	}
 
 	return {

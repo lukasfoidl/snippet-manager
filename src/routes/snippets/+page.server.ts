@@ -3,12 +3,14 @@ import { db } from '$lib/turso';
 import { fail } from '@sveltejs/kit';
 import { prepareCategories, prepareSnippets } from './server.js';
 import { categoriesBaseQuery } from '$lib/sql/categoriesQueries.server.js';
+import { get } from 'svelte/store';
+import { t } from '$lib/i18n/wrapper.js';
 
 export async function load({ locals }) {
 	const user = locals.user;
 
 	if (!user || !user.id) {
-		return fail(401, { error: 'Unauthorized!' });
+		return fail(401, { error: get(t)('auth.unauthorized') });
 	}
 
 	try {
@@ -20,6 +22,6 @@ export async function load({ locals }) {
 
 		return { success: true, snippets: snippets, categories: categories };
 	} catch {
-		return fail(500, { error: 'Failed fetching snippets!' });
+		return fail(500, { error: get(t)('snippets.fetchingError') });
 	}
 }

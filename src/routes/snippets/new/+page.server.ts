@@ -7,12 +7,14 @@ import {
 	insertSnippetsCategoriesStatement,
 	insertSnippetStatement
 } from '$lib/sql/snippetsQueries.server.js';
+import { get } from 'svelte/store';
+import { t } from '$lib/i18n/wrapper.js';
 
 export async function load({ locals }) {
 	const user = locals.user;
 
 	if (!user || !user.id) {
-		return fail(401, { error: 'Unauthorized!' });
+		return fail(401, { error: get(t)('auth.unauthorized') });
 	}
 
 	try {
@@ -21,7 +23,7 @@ export async function load({ locals }) {
 
 		return { success: true, categories: categories };
 	} catch {
-		return fail(500, { error: 'Failed fetching categories!' });
+		return fail(500, { error: get(t)('snippets.fetchingError') });
 	}
 }
 
@@ -30,7 +32,7 @@ export const actions = {
 		const user = locals.user;
 
 		if (!user || !user.id) {
-			return fail(401, { error: 'Unauthorized!' });
+			return fail(401, { error: get(t)('auth.unauthorized') });
 		}
 
 		const formData = await request.formData();
@@ -68,10 +70,10 @@ export const actions = {
 			}
 
 			await tx.commit();
-			return { success: true, message: 'Snippet created successfully!' };
+			return { success: true, message: get(t)('snippets.creation.success') };
 		} catch {
 			await tx.rollback();
-			return fail(500, { error: 'Failed creating snippet!' });
+			return fail(500, { error: get(t)('snippets.creation.error') });
 		}
 	}
 };

@@ -4,6 +4,7 @@
 	import type { ActionResult } from '@sveltejs/kit';
 	import { goto } from '$app/navigation';
 	import { showToast } from '$lib/stores/toast';
+	import { t } from '$lib/i18n/wrapper';
 
 	export let data;
 
@@ -24,6 +25,6 @@
 <div class="pb-1 pl-1 text-xs font-semibold opacity-60">{data.user.username}</div>
 <form method="post" action="/auth?/logout" use:enhance={customEnhance}>
 	<li>
-		<button><MdiLogout />Logout</button>
+		<button><MdiLogout />{$t('layout.logout')}</button>
 	</li>
 </form>

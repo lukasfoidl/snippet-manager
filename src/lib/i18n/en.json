@@ -1,20 +1,158 @@
 {
 	"auth": {
-		"username": "Username*",
+		"authenticationError": "Failed to authenticate!",
+		"fetchingError": "Failed fetching user!",
+		"login": {
+			"error": "Invalid credentials!",
+			"submit": "Login",
+			"success": "Logged in successfully!"
+		},
+		"logout": {
+			"success": "Logged out successfully!"
+		},
 		"password": "Password*",
-		"login": "Login",
-		"register": "Register",
+		"registration": {
+			"error": "Failed creating user!",
+			"submit": "Register",
+			"success": "User created successfully!"
+		},
+		"unauthorized": "Unauthorized!",
+		"username": "Username*",
 		"validation": {
+			"user": "Invalid inputs!",
 			"username": {
-				"required": "Username is required!",
+				"duplicate": "Username already exists!",
 				"format": "Invalid format!",
-				"duplicate": "Username already exists!"
+				"required": "Username is required!"
 			},
 			"password": {
-				"required": "Password is required!",
-				"format": "Password must be at least 8 characters!"
+				"format": "Password must be at least 8 characters!",
+				"required": "Password is required!"
 			}
 		}
 	},
-	"test": "Bonjour"
+	"categories": {
+		"add": "Add new category",
+		"creation": {
+			"error": "Failed creating category!",
+			"success": "Category created successfully!"
+		},
+		"color": {
+			"hover": "Pick a color"
+		},
+		"deletion": {
+			"confirmation": {
+				"description": "Snippets using this category will not be deleted.",
+				"title": "Do you really want to delete this category?"
+			},
+			"error": "Failed deleting category!",
+			"success": "Category deleted successfully!"
+		},
+		"fetchingError": "Failed fetching categories!",
+		"name": {
+			"placeholder": "Latin",
+			"value": "Name*"
+		},
+		"notFound": "Category not found!",
+		"preview": "Preview",
+		"submit": "Save",
+		"update": {
+			"error": "Failed updating category!",
+			"success": "Category updated successfully!"
+		},
+		"validation": {
+			"category": "Invalid inputs!",
+			"color": {
+				"format": "Invalid format!",
+				"required": "Color is required!"
+			},
+			"name": {
+				"format": "Invalid format!",
+				"required": "Name is required!"
+			}
+		}
+	},
+	"deleteDialog": {
+		"cancel": "Cancel",
+		"delete": "Delete"
+	},
+	"layout": {
+		"categories": "Categories",
+		"darkmode": "Darkmode",
+		"language": "Language",
+		"lighmode": "Lighmode",
+		"login": "Login",
+		"logout": "Logout",
+		"menu": "Menu",
+		"snippets": "Snippets",
+		"userMenu": "User menu"
+	},
+	"noDataFound": "No data found",
+	"snippets": {
+		"add": "Add new snippet",
+		"categorySelector": {
+			"notFound": "No categories found!",
+			"title": "Select categories"
+		},
+		"content": {
+			"placeholder": "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+			"value": "Content*"
+		},
+		"copyToClipboard": {
+			"error": "Failed copying to clipboard!",
+			"success": "Copied to clipboard!",
+			"title": "Copy to clipboard"
+		},
+		"creation": {
+			"error": "Failed creating snippet!",
+			"success": "Snippet created successfully!"
+		},
+		"deletion": {
+			"confirmation": {
+				"description": "Categories used by this snippet will not be deleted.",
+				"title": "Do you really want to delete this snippet?"
+			},
+			"error": "Failed deleting snippet!",
+			"success": "Snippet deleted successfully!"
+		},
+		"description": {
+			"placeholder": "Latin alphabet",
+			"value": "Description"
+		},
+		"fetchingError": "Failed fetching snippets!",
+		"filter": {
+			"clearSearch": "Clear search",
+			"filterByCategory": "Filter by category",
+			"placeholder": "Search",
+			"reset": "Reset filters"
+		},
+		"notFound": "Snippet not found!",
+		"submit": "Save",
+		"title": {
+			"placeholder": "Alphabet",
+			"value": "Title*"
+		},
+		"update": {
+			"error": "Failed updating snippet!",
+			"success": "Snippet updated successfully!"
+		},
+		"validation": {
+			"categories": {
+				"success": "Invalid inputs!",
+				"error": "Failed validating categories!"
+			},
+			"content": {
+				"format": "Invalid format!",
+				"required": "Content is required!"
+			},
+			"description": {
+				"format": "Invalid format!"
+			},
+			"snippet": "Invalid inputs!",
+			"title": {
+				"format": "Invalid format!",
+				"required": "Title is required!"
+			}
+		}
+	}
 }

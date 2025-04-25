@@ -12,7 +12,7 @@
 	import LogoutListItem from '$lib/components/logoutListItem.svelte';
 	import DeleteDialog from '$lib/components/deleteDialog.svelte';
 	import LanguageDropdownList from '$lib/components/languageDropdownList.svelte';
-	import { initialized } from '$lib/i18n/wrapper';
+	import { initialized, t } from '$lib/i18n/wrapper';
 	import { i18n } from '$lib/i18n/client';
 
 	const { data, children } = $props();
@@ -50,28 +50,33 @@
 		</div>
 		<div class="navbar-center hidden md:flex">
 			<ul class="menu menu-horizontal px-1">
-				<li><a href="/snippets"><MdiText />Snippets</a></li>
-				<li><a href="/categories"><MdiShapeOutline />Categories</a></li>
+				<li><a href="/snippets"><MdiText />{$t('layout.snippets')}</a></li>
+				<li><a href="/categories"><MdiShapeOutline />{$t('layout.categories')}</a></li>
 			</ul>
 		</div>
 		<div class="navbar-end">
 			<div class="hidden gap-2 md:flex">
 				<div class="dropdown dropdown-end">
-					<div tabindex="0" role="button" class="btn btn-ghost px-2" title="Change language">
+					<div tabindex="0" role="button" class="btn btn-ghost px-2" title={$t('layout.language')}>
 						<MdiTranslate class="h-5 w-5" />
 					</div>
 					<LanguageDropdownList currentLang={data.lang} />
 				</div>
-				<button class="btn btn-ghost pr-1 pl-2" onclick={changeTheme} title="Darkmode">
+				<button class="btn btn-ghost pr-1 pl-2" onclick={changeTheme} title={$t('layout.darkmode')}>
 					<MdiMoon class="h-5 w-5" />
 				</button>
 				{#if data.user === undefined}
-					<a role="button" class="btn btn-ghost px-2" href="/auth" title="Login">
+					<a role="button" class="btn btn-ghost px-2" href="/auth" title={$t('layout.login')}>
 						<MdiLogin class="h-5 w-5" />
 					</a>
 				{:else}
 					<div class="dropdown dropdown-end">
-						<div tabindex="0" role="button" class="btn btn-ghost px-2" title="User menu">
+						<div
+							tabindex="0"
+							role="button"
+							class="btn btn-ghost px-2"
+							title={$t('layout.userMenu')}
+						>
 							<MdiUser class="h-5 w-5" />
 						</div>
 						<ul
@@ -84,27 +89,27 @@
 				{/if}
 			</div>
 			<div class="dropdown dropdown-end">
-				<div tabindex="0" role="button" class="btn btn-ghost md:hidden" title="Menu">
+				<div tabindex="0" role="button" class="btn btn-ghost md:hidden" title={$t('layout.menu')}>
 					<MdiMenu class="h-5 w-5" />
 				</div>
 				<ul
 					tabindex="-1"
 					class="menu menu-md dropdown-content rounded-box mt-3 w-40 bg-white p-2 text-black shadow"
 				>
-					<li><a href="/snippets"><MdiText />Snippets</a></li>
-					<li><a href="/categories"><MdiShapeOutline />Categories</a></li>
+					<li><a href="/snippets"><MdiText />{$t('layout.snippets')}</a></li>
+					<li><a href="/categories"><MdiShapeOutline />{$t('layout.categories')}</a></li>
 					<div class="divider m-0"></div>
 					<div id="dropdown" class="dropdown dropdown-end">
 						<li>
 							<button onclick={toggleLangDropdown} onblur={resetDropdowns}>
-								<MdiTranslate />Language
+								<MdiTranslate />{$t('layout.language')}
 							</button>
 						</li>
 						{#if showLangDropdown}
 							<LanguageDropdownList currentLang={data.lang} />
 						{/if}
 					</div>
-					<li><button onclick={changeTheme}><MdiMoon />Darkmode</button></li>
+					<li><button onclick={changeTheme}><MdiMoon />{$t('layout.darkmode')}</button></li>
 					<div class="divider m-0"></div>
 					{#if data.user === undefined}
 						<li><a href="/auth"><MdiLogin />Login</a></li>

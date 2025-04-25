@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import CategoryForm from '$lib/components/categoryForm.svelte';
+	import { t } from '$lib/i18n/wrapper.js';
 	import { showToast } from '$lib/stores/toast.js';
 	import type { Category } from '$lib/types.js';
 
@@ -9,7 +10,7 @@
 
 	$effect(() => {
 		if (!category) {
-			showToast('Category not found!', 'error');
+			showToast($t('categories.notFound'), 'error');
 			goto('/categories');
 		}
 	});

@@ -1,7 +1,9 @@
+import { t } from '$lib/i18n/wrapper';
 import { categoriesLeanQuery } from '$lib/sql/categoriesQueries.server';
 import { db } from '$lib/turso';
 import type { Category, Snippet } from '$lib/types';
 import type { ResultSet } from '@libsql/client';
+import { get } from 'svelte/store';
 
 export function prepareSnippets(result: ResultSet) {
 	// Grouping rows into snippets with nested categories
@@ -60,11 +62,11 @@ export async function validateCategories(
 
 			for (const id of ids) {
 				if (!dbIds.includes(id)) {
-					return { success: false, error: 'Invalid inputs!' };
+					return { success: false, error: get(t)('snippets.validation.categories.success') };
 				}
 			}
 		} catch {
-			return { success: false, error: 'Failed to validate categories!' };
+			return { success: false, error: get(t)('snippets.validation.categories.error') };
 		}
 	}
 

@@ -1,4 +1,6 @@
+import { get } from 'svelte/store';
 import { colorRegex, nameRegex } from './regex';
+import { t } from '$lib/i18n/wrapper';
 
 export type CategoryValidationResult = {
 	success: boolean;
@@ -25,9 +27,9 @@ export function validateName(name: string): CategoryValidationResult {
 	const errors: CategoryValidationResult['errors'] = {};
 
 	if (!name.trim()) {
-		errors.name = 'Name is required!';
+		errors.name = get(t)('categories.validation.name.required');
 	} else if (!nameRegex.test(name)) {
-		errors.name = 'Invalid name format!';
+		errors.name = get(t)('categories.validation.name.format');
 	}
 
 	return {
@@ -40,9 +42,9 @@ export function validateColor(hex: string): CategoryValidationResult {
 	const errors: CategoryValidationResult['errors'] = {};
 
 	if (!hex.trim()) {
-		errors.hex = 'Color is required!';
+		errors.hex = get(t)('categories.validation.color.required');
 	} else if (!colorRegex.test(hex)) {
-		errors.hex = 'Invalid color format!';
+		errors.hex = get(t)('categories.validation.color.format');
 	}
 
 	return {

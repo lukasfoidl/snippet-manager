@@ -10,12 +10,14 @@ import { fail } from '@sveltejs/kit';
 import { prepareCategories, prepareSnippets, validateCategories } from '../server.js';
 import { validateSnippet } from '$lib/utils/validateSnippet.js';
 import { categoriesBaseQuery } from '$lib/sql/categoriesQueries.server.js';
+import { get } from 'svelte/store';
+import { t } from '$lib/i18n/wrapper.js';
 
 export async function load({ locals, params }) {
 	const user = locals.user;
 
 	if (!user || !user.id) {
-		return fail(401, { error: 'Unauthorized!' });
+		return fail(401, { error: get(t)('auth.unauthorized') });
 	}
 
 	try {
@@ -27,7 +29,7 @@ export async function load({ locals, params }) {
 
 		return { success: true, snippet: snippet, categories: categories };
 	} catch {
-		return fail(500, { error: 'Failed fetching snippets!' });
+		return fail(500, { error: get(t)('snippets.fetchingError') });
 	}
 }
 
@@ -36,7 +38,7 @@ export const actions = {
 		const user = locals.user;
 
 		if (!user || !user.id) {
-			return fail(401, { error: 'Unauthorized!' });
+			return fail(401, { error: get(t)('auth.unauthorized') });
 		}
 
 		const formData = await request.formData();
@@ -48,7 +50,7 @@ export const actions = {
 		const categoryIds = categoryIdsRaw ? categoryIdsRaw.split(',').map(Number) : [];
 
 		if (!validateSnippet(title, description, content).success) {
-			return fail(400, { error: 'Invalid inputs!' });
+			return fail(400, { error: get(t)('snippets.validation.snippet') });
 		} else {
 			const result = await validateCategories(user.id, categoryIds);
 			if (!result.success) {
@@ -82,17 +84,17 @@ export const actions = {
 
 			await tx.commit();
 
-			return { success: true, message: 'Snippet updated successfully!' };
+			return { success: true, message: get(t)('snippets.update.success') };
 		} catch {
 			await tx.rollback();
-			return fail(500, { error: 'Failed updating snippet!' });
+			return fail(500, { error: get(t)('snippets.update.error') });
 		}
 	},
 	delete: async ({ locals, params }) => {
 		const user = locals.user;
 
 		if (!user || !user.id) {
-			return fail(401, { error: 'Unauthorized!' });
+			return fail(401, { error: get(t)('auth.unauthorized') });
 		}
 
 		const tx = await db.transaction('write');
@@ -111,10 +113,10 @@ export const actions = {
 
 			await tx.commit();
 
-			return { success: true, message: 'Snippet deleted successfully!' };
+			return { success: true, message: get(t)('snippets.deletion.success') };
 		} catch {
 			await tx.rollback();
-			return fail(500, { error: 'Failed deleting snippet!' });
+			return fail(500, { error: get(t)('snippets.deletion.error') });
 		}
 	}
 };

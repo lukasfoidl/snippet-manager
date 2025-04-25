@@ -3,6 +3,7 @@
 	import { goto } from '$app/navigation';
 	import CategorySelector from '$lib/components/categorySelector.svelte';
 	import StandardButton from '$lib/components/standardButton.svelte';
+	import { t } from '$lib/i18n/wrapper';
 	import { showModal } from '$lib/stores/modal';
 	import { showToast } from '$lib/stores/toast.js';
 	import type { Category } from '$lib/types';
@@ -80,8 +81,8 @@
 	function onDelete() {
 		showModal(
 			'deleteDialog',
-			'Do you really want to delete this snippet?',
-			'Categories used by this snippet will not be deleted.',
+			$t('snippets.deletion.confirmation.title'),
+			$t('snippets.deletion.confirmation.description'),
 			'/snippets/' + snippet.id + '?/delete',
 			'/snippets'
 		);
@@ -91,7 +92,7 @@
 <form method="post" novalidate use:enhance={customEnhance}>
 	<div class="inline-flex w-full gap-5">
 		<fieldset class="fieldset w-full">
-			<legend class="fieldset-legend text-sm">Title*</legend>
+			<legend class="fieldset-legend text-sm">{$t('snippets.title.value')}</legend>
 			<input
 				type="text"
 				name="title"
@@ -99,7 +100,7 @@
 				oninput={handleTitleInput}
 				class="input focus-within:border-primary validator w-full focus-within:outline-0"
 				style={titleError.length > 0 ? 'border-color: var(--color-error)' : ''}
-				placeholder="Alphabet"
+				placeholder={$t('snippets.title.placeholder')}
 				pattern={titleRegex.source}
 				maxlength="20"
 			/>
@@ -114,7 +115,7 @@
 		</div>
 	</div>
 	<fieldset class="fieldset">
-		<legend class="fieldset-legend text-sm">Description</legend>
+		<legend class="fieldset-legend text-sm">{$t('snippets.description.value')}</legend>
 		<input
 			type="text"
 			name="description"
@@ -122,7 +123,7 @@
 			oninput={handleDescriptionInput}
 			class="input focus-within:border-primary validator w-full focus-within:outline-0"
 			style={descriptionError.length > 0 ? 'border-color: var(--color-error)' : ''}
-			placeholder="Latin alphabet"
+			placeholder={$t('snippets.description.placeholder')}
 			pattern={descriptionRegex.source}
 			maxlength="50"
 		/>
@@ -132,14 +133,14 @@
 		</div>
 	</fieldset>
 	<fieldset class="fieldset">
-		<legend class="fieldset-legend text-sm">Content*</legend>
+		<legend class="fieldset-legend text-sm">{$t('snippets.content.value')}</legend>
 		<textarea
 			name="content"
 			bind:value={content}
 			oninput={handleContentInput}
 			class="input focus-within:border-primary validator h-40 w-full focus-within:outline-0"
 			style={contentError.length > 0 ? 'border-color: var(--color-error)' : ''}
-			placeholder="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+			placeholder={$t('snippets.content.placeholder')}
 			maxlength="1500"
 		></textarea>
 		<div class="inline-flex justify-between">
@@ -152,11 +153,11 @@
 			<StandardButton
 				{loading}
 				type="button"
-				text="Delete"
+				text={$t('deleteDialog.delete')}
 				colorClass="btn-error"
 				onClick={onDelete}
 			/>
 		{/if}
-		<StandardButton {loading} formaction="?/save" text="Save" type="submit" />
+		<StandardButton {loading} formaction="?/save" text={$t('snippets.submit')} type="submit" />
 	</div>
 </form>

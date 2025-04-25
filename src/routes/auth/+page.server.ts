@@ -19,7 +19,7 @@ export const actions = {
 		const password = formData.get('password') as string;
 
 		if (!validateUser(username, password).success) {
-			return fail(400, { error: 'Invalid inputs!' });
+			return fail(400, { error: get(t)('auth.validation.user') });
 		}
 
 		const tx = await db.transaction('write');
@@ -45,13 +45,13 @@ export const actions = {
 
 			const error = await authenticate(Number(result2.lastInsertRowid), username, cookies);
 			if (error instanceof Error) {
-				return fail(500, { error: 'Failed to authenticate!' });
+				return fail(500, { error: get(t)('auth.authenticationError') });
 			}
 
-			return { success: true, message: 'User created successfully!' };
+			return { success: true, message: get(t)('auth.registration.success') };
 		} catch {
 			await tx.rollback();
-			return fail(500, { error: 'Failed creating user!' });
+			return fail(500, { error: get(t)('auth.registration.error') });
 		}
 	},
 	login: async ({ request, cookies }) => {
@@ -61,30 +61,30 @@ export const actions = {
 		const password = formData.get('password') as string;
 
 		if (!validateUser(username, password).success) {
-			return fail(400, { error: 'Invalid inputs!' });
+			return fail(400, { error: get(t)('auth.validation.user') });
 		}
 
 		try {
 			const result = await db.execute(secureUserQuery, [username, password]);
 
 			if (result.rows && result.rows.length !== 1) {
-				return fail(400, { error: 'Invalid credentials!' });
+				return fail(400, { error: get(t)('auth.login.error') });
 			}
 
 			const error = await authenticate(Number(result.rows[0][0]), username, cookies);
 			if (error instanceof Error) {
-				return fail(500, { error: 'Failed to authenticate!' });
+				return fail(500, { error: get(t)('auth.authenticationError') });
 			}
 
-			return { success: true, message: 'Logged in successfully!' };
+			return { success: true, message: get(t)('auth.login.success') };
 		} catch {
-			return fail(500, { error: 'Failed fetching user!' });
+			return fail(500, { error: get(t)('auth.fetchingError') });
 		}
 	},
 	logout: async ({ cookies }) => {
 		cookies.delete('jwt', { path: '/' });
 
-		return { success: true, message: 'Logged out successfully!' };
+		return { success: true, message: get(t)('auth.logout.success') };
 	},
 	lang: async ({ request, cookies }) => {
 		const formData = await request.formData();
@@ -112,7 +112,7 @@ async function authenticate(id: number, username: string, cookies: Cookies) {
 
 	cookies.set('jwt', token, {
 		httpOnly: true,
-		path: 'http://localhost:5173',
+		path: '/',
 		secure: process.env.NODE_ENV === 'production',
 		sameSite: 'lax',
 		maxAge: 60 * 60 * 24 * 7 // 1 week

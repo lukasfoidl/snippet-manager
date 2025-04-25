@@ -1,20 +1,158 @@
 {
 	"auth": {
-		"username": "Benutzername*",
+		"authenticationError": "Authentifizierung fehlgeschlagen!",
+		"fetchingError": "Laden des Benutzers fehlgeschlagen!",
+		"login": {
+			"error": "Üngültige Anmeldedaten!",
+			"submit": "Anmelden",
+			"success": "Anmeldung erfolgreich!"
+		},
+		"logout": {
+			"success": "Abmeldung erfolgreich!"
+		},
 		"password": "Passwort*",
-		"login": "Anmelden",
-		"register": "Registrieren",
+		"registration": {
+			"error": "Registrierung fehlgeschlagen!",
+			"submit": "Registrieren",
+			"success": "Benutzer erfolgreich registriert!"
+		},
+		"unauthorized": "Keine Berechtigung!",
+		"username": "Benutzername*",
 		"validation": {
+			"user": "Ungültige Eingaben!",
 			"username": {
-				"required": "Benutzername ist erforderlich!",
+				"duplicate": "Benutzername existiert bereits!",
 				"format": "Ungültiges Format!",
-				"duplicate": "Benutzername existiert bereits!"
+				"required": "Benutzername ist erforderlich!"
 			},
 			"password": {
-				"required": "Passwort ist erforderlich!",
-				"format": "Passwort muss mindestens 8 Zeichen lang sein!"
+				"format": "Passwort muss mindestens 8 Zeichen lang sein!",
+				"required": "Passwort ist erforderlich!"
 			}
 		}
 	},
-	"test": "Hallo"
+	"categories": {
+		"add": "Neue Kategorie hinzufügen",
+		"creation": {
+			"error": "Speichervorgang fehlgeschlagen!",
+			"success": "Kategorie erfolgreich gespeichert!"
+		},
+		"color": {
+			"hover": "Wähle eine Farbe"
+		},
+		"deletion": {
+			"confirmation": {
+				"description": "Snippets, die diese Kategorie verwenden, werden nicht gelöscht.",
+				"title": "Wollen Sie diese Kategorie wirklich löschen?"
+			},
+			"error": "Löschen fehlgeschlagen!",
+			"success": "Kategorie erfolgreich gelöscht!"
+		},
+		"fetchingError": "Laden der Kategorien fehlgeschlagen!",
+		"name": {
+			"placeholder": "Latein",
+			"value": "Name*"
+		},
+		"notFound": "Kategorie nicht gefunden!",
+		"preview": "Vorschau",
+		"submit": "Speichern",
+		"update": {
+			"error": "Aktualisierung fehlgeschlagen!",
+			"success": "Kategorie erfolgreich aktualisiert!"
+		},
+		"validation": {
+			"category": "Ungültige Eingaben!",
+			"color": {
+				"format": "Ungültiges Format!",
+				"required": "Farbe ist erforderlich!"
+			},
+			"name": {
+				"format": "Ungültiges Format!",
+				"required": "Name ist erforderlich!"
+			}
+		}
+	},
+	"deleteDialog": {
+		"cancel": "Abbrechen",
+		"delete": "Löschen"
+	},
+	"layout": {
+		"categories": "Kategorien",
+		"darkmode": "Dunkelmodus",
+		"language": "Sprache",
+		"lighmode": "Hellmodus",
+		"login": "Anmelden",
+		"logout": "Abmelden",
+		"menu": "Menü",
+		"snippets": "Snippets",
+		"userMenu": "Benutzermenü"
+	},
+	"noDataFound": "Keine Daten gefunden",
+	"snippets": {
+		"add": "Neues Snippet hinzufügen",
+		"categorySelector": {
+			"notFound": "Keine Kategorien gefunden!",
+			"title": "Wähle Kategorien"
+		},
+		"content": {
+			"placeholder": "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+			"value": "Inhalt*"
+		},
+		"copyToClipboard": {
+			"error": "Kopieren in Zwischenablage fehlgeschlagen!",
+			"success": "In Zwischenablage kopiert!",
+			"title": "In Zwischenablage kopieren"
+		},
+		"creation": {
+			"error": "Speichervorgang fehlgeschlagen!",
+			"success": "Snippet erfolgreich gespeichert!"
+		},
+		"deletion": {
+			"confirmation": {
+				"description": "Die von diesem Snippet verwendeten Kategorien werden nicht gelöscht.",
+				"title": "Wollen Sie dieses Snippet wirklich löschen?"
+			},
+			"error": "Löschen fehlgeschlagen!",
+			"success": "Snippet erfolgreich gelöscht!"
+		},
+		"description": {
+			"placeholder": "Lateinisches Alphabet",
+			"value": "Beschreibung"
+		},
+		"fetchingError": "Laden der Snippets fehlgeschlagen!",
+		"filter": {
+			"clearSearch": "Suche zurücksetzen",
+			"filterByCategory": "Nach Kategorien filtern",
+			"placeholder": "Suchen",
+			"reset": "Alle Filter zurücksetzen"
+		},
+		"notFound": "Snippet nicht gefunden!",
+		"submit": "Speichern",
+		"title": {
+			"placeholder": "Alphabet",
+			"value": "Titel*"
+		},
+		"update": {
+			"error": "Aktualisierung fehlgeschlagen!",
+			"success": "Snippet erfolgreich aktualisiert!"
+		},
+		"validation": {
+			"categories": {
+				"success": "Ungültige Eingaben!",
+				"error": "Validierung der Kategorien fehlgeschlagen!"
+			},
+			"content": {
+				"format": "Ungültiges Format!",
+				"required": "Inhalt ist erforderlich!"
+			},
+			"description": {
+				"format": "Ungültiges Format!"
+			},
+			"snippet": "Ungültige Eingaben!",
+			"title": {
+				"format": "Ungültiges Format!",
+				"required": "Titel ist erforderlich!"
+			}
+		}
+	}
 }

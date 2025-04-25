@@ -1,12 +1,13 @@
 <script lang="ts">
 	import MdiShapeOutline from 'virtual:icons/mdi/shape-outline';
 	import CategoryBadge from '$lib/components/categoryBadge.svelte';
+	import { t } from '$lib/i18n/wrapper';
 
 	let {
 		categories = [],
 		selectedCategoryIds = $bindable(),
 		indicator = false,
-		title = 'Select categories'
+		title = $t('snippets.categorySelector.title')
 	} = $props();
 </script>
 
@@ -39,7 +40,9 @@
 			</li>
 		{/each}
 		{#if categories.length === 0}
-			<li class="text-xs font-semibold whitespace-nowrap opacity-60">No categories found</li>
+			<li class="text-xs font-semibold whitespace-nowrap opacity-60">
+				{$t('snippets.categorySelector.notFound')}
+			</li>
 		{/if}
 	</ul>
 </div>

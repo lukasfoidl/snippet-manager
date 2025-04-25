@@ -5,6 +5,7 @@
 	import { showToast } from '$lib/stores/toast';
 	import type { ActionResult } from '@sveltejs/kit';
 	import StandardButton from './standardButton.svelte';
+	import { t } from '$lib/i18n/wrapper';
 
 	const modalId = 'deleteDialog';
 
@@ -38,14 +39,14 @@
 					{loading}
 					formaction={$modal.action || '/'}
 					colorClass="btn-error"
-					text="Delete"
+					text={$t('deleteDialog.delete')}
 					type="submit"
 				/>
 			</form>
 			<StandardButton
 				{loading}
 				colorClass="btn-info"
-				text="Cancel"
+				text={$t('deleteDialog.cancel')}
 				type="button"
 				onClick={() => closeModal(modalId)}
 			/>

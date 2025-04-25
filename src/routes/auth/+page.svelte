@@ -97,9 +97,9 @@
 			{loading}
 			formaction="?/register"
 			type="submit"
-			text={$t('auth.register')}
+			text={$t('auth.registration.submit')}
 			colorClass="btn-accent"
 		/>
-		<StandardButton {loading} formaction="?/login" type="submit" text={$t('auth.login')} />
+		<StandardButton {loading} formaction="?/login" type="submit" text={$t('auth.login.submit')} />
 	</div>
 </form>
