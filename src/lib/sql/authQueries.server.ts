@@ -15,11 +15,10 @@ export const baseUserQuery = `
 
 export const secureUserQuery = `
     SELECT
-        id
+        id,
+        password
     FROM
         users
     WHERE
-        username LIKE ?
-    AND
-        password LIKE ?;
+        username LIKE ?;
 `;

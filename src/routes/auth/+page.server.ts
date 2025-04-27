@@ -10,6 +10,7 @@ import { fail, type Cookies } from '@sveltejs/kit';
 import { get } from 'svelte/store';
 import { t } from '$lib/i18n/wrapper';
 import type { Language } from '$lib/types.js';
+import bcrypt from 'bcryptjs';
 
 export const actions = {
 	register: async ({ request, cookies }) => {
@@ -35,10 +36,12 @@ export const actions = {
 				return fail(400, { error: get(t)('auth.validation.username.duplicate') });
 			}
 
+			const hashedPassword = await bcrypt.hash(password, 10);
+
 			// Add user to the database
 			const result2 = await tx.execute({
 				sql: insertUserStatement,
-				args: [username, password]
+				args: [username, hashedPassword]
 			});
 
 			await tx.commit();
@@ -65,9 +68,14 @@ export const actions = {
 		}
 
 		try {
-			const result = await db.execute(secureUserQuery, [username, password]);
+			const result = await db.execute(secureUserQuery, [username]);
 
 			if (result.rows && result.rows.length !== 1) {
+				return fail(400, { error: get(t)('auth.login.error') });
+			}
+
+			const isMatch = await bcrypt.compare(password, result.rows[0][1] as string);
+			if (!isMatch) {
 				return fail(400, { error: get(t)('auth.login.error') });
 			}
 
