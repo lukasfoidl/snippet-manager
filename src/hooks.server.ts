@@ -15,7 +15,8 @@ export async function handle({ event, resolve }) {
 			path: '/',
 			httpOnly: true,
 			sameSite: 'lax',
-			secure: true
+			secure: true,
+			maxAge: 60 * 60 * 24 * 365 // 1 year
 		});
 	}
 
@@ -58,7 +59,7 @@ function detectBrowserLanguage(header: string | null): Language | undefined {
 	if (!header) return undefined;
 
 	const langs = header.split(',').map((part) => part.split(';')[0].trim());
-    
+
 	for (const lang of langs) {
 		const short = lang.slice(0, 2) as Language; // e.g., 'de-DE' → 'de'
 		if (languages.some((lang) => lang.code === short)) {

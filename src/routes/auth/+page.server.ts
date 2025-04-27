@@ -95,7 +95,8 @@ export const actions = {
 			path: '/',
 			httpOnly: true,
 			sameSite: 'lax',
-			secure: true
+			secure: true,
+			maxAge: 60 * 60 * 24 * 365 // 1 year
 		});
 
 		return { success: true, lang: lang };
