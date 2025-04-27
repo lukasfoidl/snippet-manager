@@ -15,13 +15,21 @@
 	import LanguageDropdownList from '$lib/components/languageDropdownList.svelte';
 	import { initialized, t } from '$lib/i18n/wrapper';
 	import { i18n } from '$lib/i18n/client';
+	import { theme } from '$lib/stores/theme';
+	import { derived } from 'svelte/store';
 
 	const { data, children } = $props();
 
 	i18n.changeLanguage(data.lang); // set initial correct server language
 
 	let showLangDropdown = $state(false);
-	let darkmode = $state(false);
+
+	const darkmode = derived(theme, ($theme) => $theme === 'blueberry-dark');
+
+	function toggleTheme() {
+		$theme = $theme === 'blueberry-light' ? 'blueberry-dark' : 'blueberry-light';
+		(document.activeElement as HTMLElement)?.blur();
+	}
 
 	function toggleLangDropdown() {
 		showLangDropdown = !showLangDropdown;
@@ -32,10 +40,6 @@
 		setTimeout(() => {
 			showLangDropdown = false;
 		}, 100);
-	}
-
-	function onChangeTheme() {
-		(document.activeElement as HTMLElement)?.blur();
 	}
 </script>
 
@@ -63,23 +67,17 @@
 					</div>
 					<LanguageDropdownList currentLang={data.lang} />
 				</div>
-				<label
-					class="swap btn btn-ghost px-2"
-					title={darkmode ? $t('layout.lightmode') : $t('layout.darkmode')}
+				<button
+					class="btn btn-ghost px-2"
+					onclick={toggleTheme}
+					title={$darkmode ? $t('layout.lightmode') : $t('layout.darkmode')}
 				>
-					<input
-						type="checkbox"
-						class="theme-controller hidden"
-						value="blueberry-dark"
-						bind:checked={darkmode}
-					/>
-					<div class="swap-on">
+					{#if $darkmode}
 						<MdiSun class="h-5 w-5" />
-					</div>
-					<div class="swap-off">
+					{:else}
 						<MdiMoon class="h-5 w-5" />
-					</div>
-				</label>
+					{/if}
+				</button>
 				{#if data.user === undefined}
 					<a role="button" class="btn btn-ghost px-2" href="/auth" title={$t('layout.login')}>
 						<MdiLogin class="h-5 w-5" />
@@ -124,17 +122,15 @@
 							<LanguageDropdownList currentLang={data.lang} />
 						{/if}
 					</div>
-					<label class="btn btn-ghost swap place-content-stretch p-0 font-normal">
-						<input
-							type="checkbox"
-							class="theme-controller hidden"
-							value="blueberry-dark"
-							bind:checked={darkmode}
-							onclick={onChangeTheme}
-						/>
-						<li class="swap-off"><div><MdiMoon />{$t('layout.darkmode')}</div></li>
-						<li class="swap-on"><div><MdiSun />{$t('layout.lightmode')}</div></li>
-					</label>
+					<li>
+						<button onclick={toggleTheme}>
+							{#if $darkmode}
+								<MdiSun />{$t('layout.lightmode')}
+							{:else}
+								<MdiMoon />{$t('layout.darkmode')}
+							{/if}
+						</button>
+					</li>
 					<div class="divider m-0"></div>
 					{#if data.user === undefined}
 						<li><a href="/auth"><MdiLogin />Login</a></li>

@@ -11,3 +11,13 @@
 		<div class="flex h-full flex-col">%sveltekit.body%</div>
 	</body>
 </html>
+
+<script>
+	// Display correct theme on initial load to prevent flickering
+	const saved = localStorage.getItem('theme');
+	const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+	const theme = saved || (prefersDark ? 'blueberry-dark' : 'blueberry-light');
+
+	document.documentElement.setAttribute('data-theme', theme);
+	localStorage.setItem('theme', theme);
+</script>
