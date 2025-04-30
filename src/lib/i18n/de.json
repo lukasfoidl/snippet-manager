@@ -77,6 +77,7 @@
 		"delete": "Löschen"
 	},
 	"home": {
+		"callToAction": "Registrieren Sie sich jetzt und beginnen Sie mit Ihren eigenen Snippets. Keine E-Mail oder persönlichen Daten erforderlich.",
 		"p1": {
 			"title": "Wiederverwendbare Snippets von überall aus verwenden",
 			"text": "Organisieren Sie wiederverwendbare Texte, Zahlen und andere Informationen in Snippets und kopieren Sie sie mit nur einem Klick in die Zwischenablage. Greifen Sie über jedes Gerät darauf zu, ob Firmenlaptop, privates Tablet oder das Smartphone eines Freundes. Einfach anmelden und von überall auf Ihre Snippets zugreifen.",
@@ -91,8 +92,33 @@
 			"title": "Verschiedene UI-Optionen für perfekte Benutzerfreundlichkeit",
 			"text": "Unterschiedliche UI-Einstellungen wie Dunkel- und Hellmodus sowie verschiedene Sprachen ermöglichen das beste Nutzererlebnis für die unterschiedlichsten Bedürfnisse.",
 			"alt": "Mobile Ansicht des Snippet-Formulars im Snippet-Manager."
+		}
+	},
+	"imprint": {
+		"concern": {
+			"title": "Anliegen",
+			"text": "Effizienzsteigerung durch Wiederverwendbarkeit kategorisierbarer und selbst konfigurierbarer Snippets."
 		},
-		"callToAction": "Registrieren Sie sich jetzt und beginnen Sie mit Ihren eigenen Snippets. Keine E-Mail oder persönlichen Daten erforderlich."
+		"conflicts": {
+			"title": "Konflikte",
+			"text": "Verbraucher haben die Möglichkeit, Beschwerden an die Online-Streitbeilegungsplattform der EU zu richten: <a href='http://ec.europa.eu/odr' class='text-blue-600 underline'>http://ec.europa.eu/odr</a>. Sie können allfällige Beschwerde auch an die oben angegebene Email-Adresse richten."
+		},
+		"contact": {
+			"title": "Kontaktdaten",
+			"text": "Email: <a href='mailto:se23m032@technikum-wien.at' class='text-blue-600 underline'>se23m032@technikum-wien.at</a>"
+		},
+		"disclaimer": {
+			"title": "Haftungsausschluss",
+			"text": "Die Nutzung der auf dieser Website angebotenen Services und Inhalte erfolgt auf eigene Verantwortung und eigenes Risiko. Jede Nutzung der Services und Inhalte dieser Website unterliegt der nachfolgenden Haftungsbegrenzung: Die verantwortliche Person dieser Website übernimmt keine Haftung für die Richtigkeit, Fehlerfreiheit, Freiheit von Schutz- und Urheberrechten Dritter, Vollständigkeit und/oder Verwendbarkeit sowie dauernden Verfügbarkeit der bereit gestellten Inhalte und Services. Darüber hinaus ist eine Haftung für Sach- und Rechtsmängel ausdrücklich ausgeschlossen, sofern nicht ein vorsätzliches oder arglistiges Verhalten der verantwortlichen Person der Website nachgewiesen werden kann. Auch ist eine Haftung für indirekte Schäden, Folgeschäden oder entgangenem Gewinn, Datenverluste oder Datenänderungen vollumfänglich ausgeschlossen. Eine Haftung in anderen als den vorgenannten Fällen setzt ein nachgewiesenes vorsätzliches oder grob fahrlässiges Verhalten der verantwortlichen Person der Website voraus. <br /> Es wird ausdrücklich auf die Nutzung von Cloud-Diensten (Datenbank, Hosting) hingewiesen und darauf, dass die Datenübertragung im Internet und Datenspeicherung bei externen Anbietern Sicherheitslücken aufweisen kann und keine Haftung der verantwortlichen Person der Website für externe Clouddienste übernommen wird. Weiters wird explizit erwähnt, dass von der Speicherung sensibler sowie persönlicher Daten abgeraten wird."
+		},
+		"general": {
+			"title": "Allgemein",
+			"text": "Diese Anwendung ist Teil einer Projektarbeit des Studiengangs Software Engineering der FH Technikum Wien."
+		},
+		"responsible": {
+			"title": "Verantwortliche Person",
+			"text": "Lukas Foidl <br /> Theodor Stefskygasse 13 <br /> 2000 Stockerau <br /> Österreich"
+		}
 	},
 	"languages": {
 		"de": "Deutsch",

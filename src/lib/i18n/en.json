@@ -77,6 +77,7 @@
 		"delete": "Delete"
 	},
 	"home": {
+		"callToAction": "Sign up now and get started with your own snippets. No email or personal data required.",
 		"p1": {
 			"title": "Manage reusable snippets from anywhere",
 			"text": "Organise reusable texts, numbers and other information in snippets and copy them to the clipboard with just one click. Access via any device, whether a company laptop, private tablet or a friend's smartphone. Simply log in and access your snippets from anywhere.",
@@ -91,8 +92,33 @@
 			"title": "Different UI options for perfect usability",
 			"text": "Different UI settings such as dark- and lightmode and different interface languages enable the best user experience for the most diverse needs.",
 			"alt": "Mobile view of snippet form in snippet manager."
+		}
+	},
+	"imprint": {
+		"concern": {
+			"title": "Concern",
+			"text": "Increased efficiency through reusability of categorisable and self-configurable snippets."
 		},
-		"callToAction": "Sign up now and get started with your own snippets. No email or personal data required."
+		"conflicts": {
+			"title": "Conflicts",
+			"text": "Consumers have the option of submitting complaints to the EU's online dispute resolution platform: <a href='http://ec.europa.eu/odr' class='text-blue-600 underline'>http://ec.europa.eu/odr</a>. You can also send any complaints to the email address given above."
+		},
+		"contact": {
+			"title": "Contact Details",
+			"text": "Email: <a href='mailto:se23m032@technikum-wien.at' class='text-blue-600 underline'>se23m032@technikum-wien.at</a>"
+		},
+		"disclaimer": {
+			"title": "Disclaimer",
+			"text": "The use of the services and content offered on this website is at the user's own responsibility and risk. Any use of the services and content of this website is subject to the following limitation of liability: The person responsible for this website accepts no liability for the correctness, accuracy, freedom from third-party property rights and copyrights, completeness and/or usability or permanent availability of the content and services provided. Furthermore, liability for material defects and defects of title is expressly excluded, unless wilful or fraudulent behaviour on the part of the person responsible for the website can be proven. Liability for indirect damage, consequential damage or loss of profit, loss of data or changes to data is also excluded in full. Liability in cases other than those mentioned above presupposes proven intentional or grossly negligent behaviour on the part of the person responsible for the website. <br /> Express reference is made to the use of cloud services (database, hosting) and to the fact that data transmission on the internet and data storage by external providers may have security gaps and that the person responsible for the website assumes no liability for external cloud services. Furthermore, it is explicitly mentioned that the storage of sensitive and personal data is not recommended."
+		},
+		"general": {
+			"title": "General",
+			"text": "This application is part of a project work at the Software Engineering programme of the UAS Technikum Wien."
+		},
+		"responsible": {
+			"title": "Responsible Person",
+			"text": "Lukas Foidl <br /> Theodor Stefskygasse 13 <br /> 2000 Stockerau <br /> Österreich"
+		}
 	},
 	"languages": {
 		"de": "German",

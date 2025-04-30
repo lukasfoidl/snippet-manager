@@ -25,9 +25,9 @@
 		class="hero-content flex-col gap-7 {aligned === 'left' ? 'lg:flex-row' : 'lg:flex-row-reverse'}"
 	>
 		{#if mounted}
-			<img src={imageUrl} class="min-h-[529px] min-w-[350px] rounded-lg shadow-2xl" {alt} />
+			<img src={imageUrl} class="customSize rounded-lg shadow-2xl" {alt} />
 		{:else}
-			<div class="skeleton min-h-[529px] min-w-[350px]"></div>
+			<div class="skeleton customSize"></div>
 		{/if}
 		<div>
 			<div class="pb-3 text-xl font-bold">{title}</div>
@@ -37,3 +37,17 @@
 		</div>
 	</div>
 </div>
+
+<style>
+	.customSize {
+		min-width: 250px;
+		min-height: 377px;
+	}
+
+	@media (min-width: 448px) {
+		.customSize {
+			min-width: 350px;
+			min-height: 529px;
+		}
+	}
+</style>
