@@ -1,27 +1,41 @@
 <script>
+	import { goto } from '$app/navigation';
 	import HeroComponent from '$lib/components/heroComponent.svelte';
+	import StandardButton from '$lib/components/standardButton.svelte';
+	import { t } from '$lib/i18n/wrapper.js';
 </script>
 
 <HeroComponent
-	title="Manage reusable snippets from anywhere"
-	description="Organise reusable texts, numbers and information in snippets and copy them to the clipboard with just one click. Access via any device, whether a company laptop, private tablet or a friend's smartphone, simply log in and access your snippets from anywhere."
-	imageUrl="snippets_mobile_lightmode.png"
+	title={$t('home.p1.title')}
+	description={$t('home.p1.text')}
+	imageUrlLight={'/snippets_list_light.png'}
+	imageUrlDark={'/snippets_list_dark.png'}
 	aligned="left"
-	alt="Mobile view of a snippet list in snippet manager."
+	alt={$t('home.p1.alt')}
 />
-
 <HeroComponent
-	title="Categorise your snippets for better organisation"
-	description="Organise your snippets with customisable categories that you can define, style and assign to your snippets for better recognition and usability."
-	imageUrl="categories_mobile_lightmode.png"
+	title={$t('home.p2.title')}
+	description={$t('home.p2.text')}
+	imageUrlLight={'/categories_list_light.png'}
+	imageUrlDark={'/categories_list_dark.png'}
 	aligned="right"
-	alt="Mobile view of a category list in snippet manager."
+	alt={$t('home.p2.alt')}
 />
-
 <HeroComponent
-	title="Different UI options for perfect usability"
-	description="Different UI settings such as darkmode and different interface languages enable the best user experience for the most diverse needs."
-	imageUrl="snippets_mobile_darkmode.png"
+	title={$t('home.p3.title')}
+	description={$t('home.p3.text')}
+	imageUrlLight={'/snippets_edit_dark.png'}
+	imageUrlDark={'/snippets_edit_light.png'}
 	aligned="left"
-	alt="Mobile view of a snippet list in snippet manager with darkmode enabled."
+	alt={$t('home.p3.alt')}
 />
+<div class="mt-12 mb-12 flex flex-col items-center gap-3">
+	<div class="text-center">
+		{$t('home.callToAction')}
+	</div>
+	<StandardButton
+		text={$t('auth.registration.submit')}
+		colorClass="btn-accent"
+		onClick={() => goto('/auth')}
+	/>
+</div>

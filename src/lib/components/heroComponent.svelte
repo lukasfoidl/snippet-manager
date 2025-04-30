@@ -1,21 +1,39 @@
 <script lang="ts">
+	import { theme } from '$lib/stores/theme';
+	import { onMount } from 'svelte';
+
 	export let title: string;
 	export let description: string;
-	export let imageUrl: string;
+	export let imageUrlLight: string;
+	export let imageUrlDark: string;
 	export let aligned: 'left' | 'right' = 'left';
-    export let alt: string;
+	export let alt: string;
+
+	let mounted = false;
+	let imageUrl: string = imageUrlLight; // fallback for SSR
+
+	onMount(() => {
+		mounted = true;
+		theme.subscribe(($theme) => {
+			imageUrl = $theme === 'blueberry-dark' ? imageUrlDark : imageUrlLight;
+		});
+	});
 </script>
 
-<div class="hero bg-base-200">
+<div class="hero">
 	<div
 		class="hero-content flex-col gap-7 {aligned === 'left' ? 'lg:flex-row' : 'lg:flex-row-reverse'}"
 	>
-		<img src={imageUrl} class="rounded-lg shadow-2xl" alt={alt} />
+		{#if mounted}
+			<img src={imageUrl} class="min-h-[529px] min-w-[350px] rounded-lg shadow-2xl" {alt} />
+		{:else}
+			<div class="skeleton min-h-[529px] min-w-[350px]"></div>
+		{/if}
 		<div>
-			<h1 class="text-xl font-bold">{title}</h1>
-			<p class="py-6">
+			<div class="pb-3 text-xl font-bold">{title}</div>
+			<div class="text-md">
 				{description}
-			</p>
+			</div>
 		</div>
 	</div>
 </div>

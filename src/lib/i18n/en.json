@@ -13,7 +13,7 @@
 		"password": "Password*",
 		"registration": {
 			"error": "Failed creating user!",
-			"submit": "Register",
+			"submit": "Sign up",
 			"success": "User created successfully!"
 		},
 		"unauthorized": "Unauthorized!",
@@ -50,7 +50,7 @@
 		},
 		"fetchingError": "Failed fetching categories!",
 		"name": {
-			"placeholder": "Latin",
+			"placeholder": "Git",
 			"value": "Name*"
 		},
 		"notFound": "Category not found!",
@@ -76,6 +76,24 @@
 		"cancel": "Cancel",
 		"delete": "Delete"
 	},
+	"home": {
+		"p1": {
+			"title": "Manage reusable snippets from anywhere",
+			"text": "Organise reusable texts, numbers and other information in snippets and copy them to the clipboard with just one click. Access via any device, whether a company laptop, private tablet or a friend's smartphone. Simply log in and access your snippets from anywhere.",
+			"alt": "Mobile view of snippet list in snippet manager."
+		},
+		"p2": {
+			"title": "Categorise your snippets for better organisation",
+			"text": "Organise your snippets with customisable categories that you can define, style and assign to your snippets for better recognition and usability.",
+			"alt": "Mobile view of category list in snippet manager."
+		},
+		"p3": {
+			"title": "Different UI options for perfect usability",
+			"text": "Different UI settings such as dark- and lightmode and different interface languages enable the best user experience for the most diverse needs.",
+			"alt": "Mobile view of snippet form in snippet manager."
+		},
+		"callToAction": "Sign up now and get started with your own snippets. No email or personal data required."
+	},
 	"languages": {
 		"de": "German",
 		"en": "English"
@@ -99,7 +117,7 @@
 			"title": "Select categories"
 		},
 		"content": {
-			"placeholder": "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+			"placeholder": "git reset --hard",
 			"value": "Content*"
 		},
 		"copyToClipboard": {
@@ -120,7 +138,7 @@
 			"success": "Snippet deleted successfully!"
 		},
 		"description": {
-			"placeholder": "Latin alphabet",
+			"placeholder": "Reset any uncommitted local changes",
 			"value": "Description"
 		},
 		"fetchingError": "Failed fetching snippets!",
@@ -133,7 +151,7 @@
 		"notFound": "Snippet not found!",
 		"submit": "Save",
 		"title": {
-			"placeholder": "Alphabet",
+			"placeholder": "Git Reset",
 			"value": "Title*"
 		},
 		"update": {

@@ -50,7 +50,7 @@
 		},
 		"fetchingError": "Laden der Kategorien fehlgeschlagen!",
 		"name": {
-			"placeholder": "Latein",
+			"placeholder": "Git",
 			"value": "Name*"
 		},
 		"notFound": "Kategorie nicht gefunden!",
@@ -76,6 +76,24 @@
 		"cancel": "Abbrechen",
 		"delete": "Löschen"
 	},
+	"home": {
+		"p1": {
+			"title": "Wiederverwendbare Snippets von überall aus verwenden",
+			"text": "Organisieren Sie wiederverwendbare Texte, Zahlen und andere Informationen in Snippets und kopieren Sie sie mit nur einem Klick in die Zwischenablage. Greifen Sie über jedes Gerät darauf zu, ob Firmenlaptop, privates Tablet oder das Smartphone eines Freundes. Einfach anmelden und von überall auf Ihre Snippets zugreifen.",
+			"alt": "Mobile Ansicht der Snippet-Liste im Snippet-Manager."
+		},
+		"p2": {
+			"title": "Kategorisieren Sie Ihre Snippets für eine bessere Organisation",
+			"text": "Organisieren Sie Ihre Snippets mit anpassbaren Kategorien, die Sie definieren, gestalten und Ihren Snippets zuweisen, um sie besser erkennen und nutzen zu können.",
+			"alt": "Mobile Ansicht der Kategorieliste im Snippet-Manager."
+		},
+		"p3": {
+			"title": "Verschiedene UI-Optionen für perfekte Benutzerfreundlichkeit",
+			"text": "Unterschiedliche UI-Einstellungen wie Dunkel- und Hellmodus sowie verschiedene Sprachen ermöglichen das beste Nutzererlebnis für die unterschiedlichsten Bedürfnisse.",
+			"alt": "Mobile Ansicht des Snippet-Formulars im Snippet-Manager."
+		},
+		"callToAction": "Registrieren Sie sich jetzt und beginnen Sie mit Ihren eigenen Snippets. Keine E-Mail oder persönlichen Daten erforderlich."
+	},
 	"languages": {
 		"de": "Deutsch",
 		"en": "Englisch"
@@ -99,7 +117,7 @@
 			"title": "Wähle Kategorien"
 		},
 		"content": {
-			"placeholder": "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+			"placeholder": "git reset --hard",
 			"value": "Inhalt*"
 		},
 		"copyToClipboard": {
@@ -120,7 +138,7 @@
 			"success": "Snippet erfolgreich gelöscht!"
 		},
 		"description": {
-			"placeholder": "Lateinisches Alphabet",
+			"placeholder": "Alle lokale nicht committete Änderungen zurücksetzen",
 			"value": "Beschreibung"
 		},
 		"fetchingError": "Laden der Snippets fehlgeschlagen!",
@@ -133,7 +151,7 @@
 		"notFound": "Snippet nicht gefunden!",
 		"submit": "Speichern",
 		"title": {
-			"placeholder": "Alphabet",
+			"placeholder": "Git Reset",
 			"value": "Titel*"
 		},
 		"update": {

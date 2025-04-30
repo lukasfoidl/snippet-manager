@@ -17,12 +17,14 @@
 	import { i18n } from '$lib/i18n/client';
 	import { theme } from '$lib/stores/theme';
 	import { derived } from 'svelte/store';
+	import { onMount } from 'svelte';
 
 	const { data, children } = $props();
 
 	i18n.changeLanguage(data.lang); // set initial correct server language
 
 	let showLangDropdown = $state(false);
+	let mounted = $state(false);
 
 	const darkmode = derived(theme, ($theme) => $theme === 'blueberry-dark');
 
@@ -41,6 +43,10 @@
 			showLangDropdown = false;
 		}, 100);
 	}
+
+	onMount(() => {
+		mounted = true;
+	});
 </script>
 
 {#if !initialized}
@@ -67,17 +73,22 @@
 					</div>
 					<LanguageDropdownList currentLang={data.lang} />
 				</div>
-				<button
-					class="btn btn-ghost px-2"
-					onclick={toggleTheme}
-					title={$darkmode ? $t('layout.lightmode') : $t('layout.darkmode')}
-				>
-					{#if $darkmode}
-						<MdiSun class="h-5 w-5" />
-					{:else}
-						<MdiMoon class="h-5 w-5" />
-					{/if}
-				</button>
+				{#if mounted}
+					<button
+						class="btn btn-ghost px-2"
+						onclick={toggleTheme}
+						title={$darkmode ? $t('layout.lightmode') : $t('layout.darkmode')}
+					>
+						{#if $darkmode}
+							<MdiSun class="h-5 w-5" />
+						{:else}
+							<MdiMoon class="h-5 w-5" />
+						{/if}
+					</button>
+				{:else}
+					<!-- SSR => no theme available => empty disabled button -->
+					<button disabled class="btn btn-ghost px-2"><MdiSun class="invisible h-5 w-5" /></button>
+				{/if}
 				{#if data.user === undefined}
 					<a role="button" class="btn btn-ghost px-2" href="/auth" title={$t('layout.login')}>
 						<MdiLogin class="h-5 w-5" />

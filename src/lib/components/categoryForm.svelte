@@ -92,7 +92,7 @@
 	<fieldset class="fieldset w-full">
 		<legend class="fieldset-legend text-sm">{$t('categories.preview')}</legend>
 		{#if name.length === 0 || nameError.length > 0}
-			<div class="badge badge-sm skeleton bg-info h-5 w-10">&nbsp;</div>
+			<div class="badge badge-sm skeleton h-5 w-10">&nbsp;</div>
 		{:else}
 			<CategoryBadge category={{ name: name, color: hex }} />
 		{/if}
