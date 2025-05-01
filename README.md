@@ -1,42 +1,31 @@
 # snippet-manager
-Snippet Manager is a simple web based tool to manage snippets of different kinds with the possibility to organize them using custom categorisations and filtering. An easy copy functionality to the clipboard makes this a friendly tool to manage reusable components.
 
-# sv
+Snippet Manager is a simple web based tool to manage snippets of different kinds with the possibility to organize them using custom categorisations and filtering. An easy copy to clipboard functionality makes this a friendly tool to manage reusable information.
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+## Environment Variables
 
-## Creating a project
+For the application to work, some env variables are necessary. Create a new `.env` file in the root directory and add following variables (adapt values to your secrets):
 
-If you're seeing this, you've probably already done this step. Congrats!
-
-```bash
-# create a new project in the current directory
-npx sv create
-
-# create a new project in my-app
-npx sv create my-app
+```
+DATABASE_URL=abc123
+DATABASE_TOKEN=abc123
+JWT_SECRET=abc123
 ```
 
-## Developing
+## Local Development
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+Start local development server by executing:
 
 ```bash
 npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
 ```
 
-## Building
+## Production Build
 
-To create a production version of your app:
+Create a production version by executing:
 
 ```bash
 npm run build
 ```
 
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
-
+The production build can be previewed with `npm run preview`.
