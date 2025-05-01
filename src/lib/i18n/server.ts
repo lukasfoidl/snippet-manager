@@ -1,18 +1,22 @@
 import i18n from 'i18next';
-import { readFile } from 'fs/promises';
-import path from 'path';
+import en from './en.json';
+import de from './de.json';
+import type { Language } from '$lib/types';
 
-export async function initServerI18n(lang: string) {
-	const filePath = path.resolve('src/lib/i18n', `${lang}.json`);
-	const content = await readFile(filePath, 'utf-8');
-	const json = JSON.parse(content);
+const translations = {
+	en,
+	de
+};
+
+export async function initServerI18n(lang: Language) {
+	const trans = translations[lang] ?? translations.en;
 
 	await i18n.init({
 		lng: lang,
 		fallbackLng: 'en',
 		resources: {
 			[lang]: {
-				translation: json
+				translation: trans
 			}
 		},
 		interpolation: { escapeValue: false }
