@@ -107,17 +107,21 @@
 			"title": "Kontaktdaten",
 			"text": "Email: <a href='mailto:se23m032@technikum-wien.at' class='text-blue-600 underline'>se23m032@technikum-wien.at</a>"
 		},
-		"disclaimer": {
-			"title": "Haftungsausschluss",
-			"text": "Die Nutzung der auf dieser Website angebotenen Services und Inhalte erfolgt auf eigene Verantwortung und eigenes Risiko. Jede Nutzung der Services und Inhalte dieser Website unterliegt der nachfolgenden Haftungsbegrenzung: Die verantwortliche Person dieser Website übernimmt keine Haftung für die Richtigkeit, Fehlerfreiheit, Freiheit von Schutz- und Urheberrechten Dritter, Vollständigkeit und/oder Verwendbarkeit sowie dauernden Verfügbarkeit der bereit gestellten Inhalte und Services. Darüber hinaus ist eine Haftung für Sach- und Rechtsmängel ausdrücklich ausgeschlossen, sofern nicht ein vorsätzliches oder arglistiges Verhalten der verantwortlichen Person der Website nachgewiesen werden kann. Auch ist eine Haftung für indirekte Schäden, Folgeschäden oder entgangenem Gewinn, Datenverluste oder Datenänderungen vollumfänglich ausgeschlossen. Eine Haftung in anderen als den vorgenannten Fällen setzt ein nachgewiesenes vorsätzliches oder grob fahrlässiges Verhalten der verantwortlichen Person der Website voraus. <br /> Es wird ausdrücklich auf die Nutzung von Cloud-Diensten (Datenbank, Hosting) hingewiesen und darauf, dass die Datenübertragung im Internet und Datenspeicherung bei externen Anbietern Sicherheitslücken aufweisen kann und keine Haftung der verantwortlichen Person der Website für externe Clouddienste übernommen wird. Weiters wird explizit erwähnt, dass von der Speicherung sensibler sowie persönlicher Daten abgeraten wird."
-		},
 		"general": {
 			"title": "Allgemein",
 			"text": "Diese Anwendung ist Teil einer Projektarbeit des Studiengangs Software Engineering der FH Technikum Wien."
 		},
+		"license": {
+			"title": "Lizenz",
+			"text": "MIT License<br /><br />Copyright (c) 2025 Lukas Foidl<br /><br />Jedem, der eine Kopie dieser Software und der zugehörigen Dokumentationsdateien (die 'Software') erhält, wird hiermit kostenlos die Erlaubnis erteilt, ohne Einschränkung mit der Software zu handeln, einschließlich und ohne Einschränkung der Rechte zur Nutzung, zum Kopieren, Ändern, Zusammenführen, Veröffentlichen, Verteilen, Unterlizenzieren und/oder Verkaufen von Kopien der Software, und Personen, denen die Software zur Verfügung gestellt wird, dies unter den folgenden Bedingungen zu gestatten:<br /><br />Der obige Urheberrechtshinweis und dieser Genehmigungshinweis müssen in allen Kopien oder wesentlichen Teilen der Software enthalten sein.<br /><br />DIE SOFTWARE WIRD OHNE MÄNGELGEWÄHR UND OHNE JEGLICHE AUSDRÜCKLICHE ODER STILLSCHWEIGENDE GEWÄHRLEISTUNG, EINSCHLIEẞLICH, ABER NICHT BESCHRÄNKT AUF DIE GEWÄHRLEISTUNG DER MARKTGÄNGIGKEIT, DER EIGNUNG FÜR EINEN BESTIMMTEN ZWECK UND DER NICHTVERLETZUNG VON RECHTEN DRITTER, ZUR VERFÜGUNG GESTELLT. DIE AUTOREN ODER URHEBERRECHTSINHABER SIND IN KEINEM FALL HAFTBAR FÜR ANSPRÜCHE, SCHÄDEN ODER ANDERE VERPFLICHTUNGEN, OB IN EINER VERTRAGS- ODER HAFTUNGSKLAGE, EINER UNERLAUBTEN HANDLUNG ODER ANDERWEITIG, DIE SICH AUS ODER IN VERBINDUNG MIT DER SOFTWARE ODER DER NUTZUNG ODER ANDEREN GESCHÄFTEN MIT DER SOFTWARE ERGEBEN."
+		},
+		"notice": {
+			"title": "Hinweis",
+			"text": "Es wird ausdrücklich auf die Verwendung von externen Clouddiensten (Hosting, Datenbank) hingewiesen und von der Speicherung sensibler oder persönlicher Daten abgeraten."
+		},
 		"responsible": {
 			"title": "Verantwortliche Person",
-			"text": "Lukas Foidl <br /> Theodor Stefskygasse 13 <br /> 2000 Stockerau <br /> Österreich"
+			"text": "Lukas Foidl<br />Theodor Stefskygasse 13<br />2000 Stockerau<br />Österreich"
 		}
 	},
 	"languages": {
@@ -127,7 +131,7 @@
 	"layout": {
 		"categories": "Kategorien",
 		"darkmode": "Dunkelmodus",
-        "imprint": "Impressum",
+		"imprint": "Impressum",
 		"language": "Sprache",
 		"lighmode": "Hellmodus",
 		"login": "Anmelden",

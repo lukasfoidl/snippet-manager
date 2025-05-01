@@ -24,6 +24,9 @@
 <ImprintBox title={$t('imprint.conflicts.title')} text={$t('imprint.conflicts.text')}>
 	<MdiConflict class="h-5 w-5" />
 </ImprintBox>
-<ImprintBox title={$t('imprint.disclaimer.title')} text={$t('imprint.disclaimer.text')}>
+<ImprintBox title={$t('imprint.license.title')} text={$t('imprint.license.text')}>
 	<MdiGavel class="h-5 w-5" />
+</ImprintBox>
+<ImprintBox title={$t('imprint.notice.title')} text={$t('imprint.notice.text')}>
+	<MdiInfo class="h-5 w-5" />
 </ImprintBox>

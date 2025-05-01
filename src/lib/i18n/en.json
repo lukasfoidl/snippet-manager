@@ -107,17 +107,21 @@
 			"title": "Contact Details",
 			"text": "Email: <a href='mailto:se23m032@technikum-wien.at' class='text-blue-600 underline'>se23m032@technikum-wien.at</a>"
 		},
-		"disclaimer": {
-			"title": "Disclaimer",
-			"text": "The use of the services and content offered on this website is at the user's own responsibility and risk. Any use of the services and content of this website is subject to the following limitation of liability: The person responsible for this website accepts no liability for the correctness, accuracy, freedom from third-party property rights and copyrights, completeness and/or usability or permanent availability of the content and services provided. Furthermore, liability for material defects and defects of title is expressly excluded, unless wilful or fraudulent behaviour on the part of the person responsible for the website can be proven. Liability for indirect damage, consequential damage or loss of profit, loss of data or changes to data is also excluded in full. Liability in cases other than those mentioned above presupposes proven intentional or grossly negligent behaviour on the part of the person responsible for the website. <br /> Express reference is made to the use of cloud services (database, hosting) and to the fact that data transmission on the internet and data storage by external providers may have security gaps and that the person responsible for the website assumes no liability for external cloud services. Furthermore, it is explicitly mentioned that the storage of sensitive and personal data is not recommended."
-		},
 		"general": {
 			"title": "General",
 			"text": "This application is part of a project work at the Software Engineering programme of the UAS Technikum Wien."
 		},
+		"license": {
+			"title": "License",
+			"text": "MIT License<br /><br />Copyright (c) 2025 Lukas Foidl<br /><br />Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:<br/><br />The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.<br /><br />THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
+		},
+		"notice": {
+			"title": "Notice",
+			"text": "Express reference is made to the use of external cloud services (hosting, database) and the storage of sensitive or personal data is not recommended."
+		},
 		"responsible": {
 			"title": "Responsible Person",
-			"text": "Lukas Foidl <br /> Theodor Stefskygasse 13 <br /> 2000 Stockerau <br /> Österreich"
+			"text": "Lukas Foidl<br />Theodor Stefskygasse 13<br />2000 Stockerau<br />Österreich"
 		}
 	},
 	"languages": {
